@@ -18,18 +18,19 @@ public:
 };
 
 string filename = "File not loaded";
-vector<particle> particles;
+vector<particle> particles; //Vector of particles for selected (initial) .state file
+vector<particle> particles2; //Vector of particles for final .state file
 
 int menu() {
-    int input = 0;
+    short input = 0;
     cout << "Entropic Controller\n";
     cout << "File Loaded: " << filename << "\n";
     cout << "Select an option:\n";
     cout << "0. Exit\n";
     cout << "1. Create a new file\n";
     cout << "2. Select a file\n";
-    cout << "3. Load from file\n";
-    cout << "4. Save to file\n";
+    cout << "3. Save to file\n";
+    cout << "4. Load from file\n";
     cout << "5. List particle data\n";
     cout << "6. Add a particle\n";
     cout << "7. Remove a particle\n";
@@ -74,7 +75,7 @@ void addparticle() {
     cin >> v[0];
     cout << "Enter the y velocity: ";
     cin >> v[1];
-    cout << "Enter the z velcity: ";
+    cout << "Enter the z velocity: ";
     cin >> v[2];
     cout << "Enter the x acceleration: ";
     cin >> a[0];
@@ -113,10 +114,24 @@ void listdata() {
         cout << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
     }
 }
+void removeparticle() {
+    long long int particlenumber;
+    cout << "Enter the particle number to remove: ";
+    cin >> particlenumber;
+    particles.erase(particles.begin() + particlenumber);
+}
+
+void savefile() {
+
+}
+
+void loadfile() {
+
+}
 
 int main()
 {
-    int input = 10;
+    short input = 10;
     while (input != 0) {
         input = menu();
         if (input == 1) {
@@ -125,11 +140,20 @@ int main()
         if (input == 2) {
             selectfile();
         }
+        if (input == 3) {
+            savefile();
+        }
+        if (input == 4) {
+            loadfile();
+        }
         if (input == 5) {
             listdata();
         }
         if (input == 6) {
             addparticle();
+        }
+        if (input == 7) {
+            removeparticle();
         }
     }
 }
