@@ -39,12 +39,13 @@ int menu() {
     cout << "8. Remove a particle\n";
     cout << "9. Compute a solution\n";
     cout << "10. Read a solution file\n";
+    cout << "Selection: ";
     cin >> input;
     return input;
 }
 
 void createfile() {
-    cout << "Enter a file name\n";
+    cout << "Enter a file name: ";
     cin >> filename;
     filename = filename + ".state";
     ofstream file;
@@ -53,7 +54,7 @@ file.close();
 }
 
 void selectfile() {
-    cout << "Enter a file name\n";
+    cout << "Enter a file name: ";
     cin >> filename;
     filename = filename + ".state";
 }
@@ -156,7 +157,6 @@ void loadfile() {
     ifstream file;
     string line;
     file.open(filename);
-    
     while (getline(file, line)) {
         short charge;
         cout << line << endl;
