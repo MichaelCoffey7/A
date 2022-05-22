@@ -2,9 +2,10 @@
 //
 
 #include <iostream>
+#include<fstream>
 using namespace std;
 
-char filename[20] = "File not loaded";
+string filename = "File not loaded";
 
 class electron {
 public:
@@ -44,12 +45,23 @@ int menu() {
     return input;
 }
 
+void createfile() {
+    cout << "Enter a file name\n";
+    cin >> filename;
+    filename = filename + ".state";
+    ofstream file;
+    file.open(filename);
+    file.close();
+}
 
 int main()
 {
     int input = 10;
     while (input != 0) {
         input = menu();
+        if (input == 1) {
+            createfile();
+        }
     }
 }
 
