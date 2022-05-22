@@ -156,7 +156,7 @@ void setboundary() {
 void loadfile() {
     ifstream file;
     string line;
-    short counter = 0;
+    long long int counter = 0;
     short charge;
     bool bound = false;
     file.open(filename);
