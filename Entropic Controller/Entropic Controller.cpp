@@ -3,33 +3,22 @@
 
 #include <iostream>
 #include<fstream>
+#include<vector>
 using namespace std;
 
+
+
+class particle {
+public:
+    //Define the kinematic values for particles
+    long long int position[3];
+    long long int velocity[3];
+    long long int acceleration[3];
+    short type; //The type of particle: -1 electron, 0 neutron, 1 proton
+};
+
 string filename = "File not loaded";
-
-class electron {
-public:
-    //Define the kinematic values for the electron
-    long long int position[3];
-    long long int velocity[3];
-    long long int acceleration[3];
-};
-
-class proton {
-public:
-    //Define the kinematic values for the electron
-    long long int position[3];
-    long long int velocity[3];
-    long long int acceleration[3];
-};
-
-class neutron {
-public:
-    //Define the kinematic values for the electron
-    long long int position[3];
-    long long int velocity[3];
-    long long int acceleration[3];
-};
+vector<particle> particles;
 
 int menu() {
     int input = 0;
@@ -41,8 +30,11 @@ int menu() {
     cout << "2. Select a file\n";
     cout << "3. Load from file\n";
     cout << "4. Save to file\n";
-    cout << "5. Add a particle\n";
-    cout << "6. Compute a solution\n";
+    cout << "5. List particle data\n";
+    cout << "6. Add a particle\n";
+    cout << "7. Remove a particle\n";
+    cout << "8. Compute a solution\n";
+    cout << "9. Read a solution file\n";
     cin >> input;
     return input;
 }
@@ -62,6 +54,66 @@ void selectfile() {
     filename = filename + ".state";
 }
 
+void addparticle() {
+    short charge;
+    long long int p[3];
+    long long int v[3];
+    long long int a[3];
+    cout << "Enter the particle type by charge:\n";
+    cout << "-1. Electron\n";
+    cout << "0. Neutron\n";
+    cout << "1. Proton\n";
+    cin >> charge;
+    cout << "Enter the x position: ";
+    cin >> p[0];
+    cout << "Enter the y position: ";
+    cin >> p[1];
+    cout << "Enter the z position: ";
+    cin >> p[2];
+    cout << "Enter the x velocity: ";
+    cin >> v[0];
+    cout << "Enter the y velocity: ";
+    cin >> v[1];
+    cout << "Enter the z velcity: ";
+    cin >> v[2];
+    cout << "Enter the x acceleration: ";
+    cin >> a[0];
+    cout << "Enter the y acceleration: ";
+    cin >> a[1];
+    cout << "Enter the z acceleration: ";
+    cin >> a[2];
+    particle particle;
+    particle.type = charge;
+    particle.position[0] = p[0];
+    particle.position[1] = p[1];
+    particle.position[2] = p[2];
+    particle.velocity[0] = v[0];
+    particle.velocity[1] = v[1];
+    particle.velocity[2] = v[2];
+    particle.acceleration[0] = a[0];
+    particle.acceleration[1] = a[1];
+    particle.acceleration[2] = a[2];
+    particles.push_back(particle);
+}
+
+void listdata() {
+    for (long long int i = 0; i < particles.size(); i++) {
+        cout << "Particle " << i << ":" << endl;
+        if (particles[i].type == -1) {
+            cout << "   Electron" << endl;
+        }
+        if (particles[i].type == 0) {
+            cout << "   Neutron" << endl;
+        }
+        if (particles[i].type == 1) {
+            cout << "   Proton" << endl;
+        }
+        cout << "   Position: (" << particles[i].position[0] << ", " << particles[i].position[1] << ", " << particles[i].position[2] << ")" << endl;
+        cout << "   Velcity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
+        cout << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
+    }
+}
+
 int main()
 {
     int input = 10;
@@ -72,6 +124,12 @@ int main()
         }
         if (input == 2) {
             selectfile();
+        }
+        if (input == 5) {
+            listdata();
+        }
+        if (input == 6) {
+            addparticle();
         }
     }
 }
