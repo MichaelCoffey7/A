@@ -38,9 +38,11 @@ int menu() {
     cout << "Select an option:\n";
     cout << "0. Exit\n";
     cout << "1. Create a new file\n";
-    cout << "2. Load a file\n";
-    cout << "3. Add a particle\n";
-    cout << "4. Compute a solution\n";
+    cout << "2. Select a file\n";
+    cout << "3. Load from file\n";
+    cout << "4. Save to file\n";
+    cout << "5. Add a particle\n";
+    cout << "6. Compute a solution\n";
     cin >> input;
     return input;
 }
@@ -54,6 +56,12 @@ void createfile() {
     file.close();
 }
 
+void selectfile() {
+    cout << "Enter a file name\n";
+    cin >> filename;
+    filename = filename + ".state";
+}
+
 int main()
 {
     int input = 10;
@@ -61,6 +69,9 @@ int main()
         input = menu();
         if (input == 1) {
             createfile();
+        }
+        if (input == 2) {
+            selectfile();
         }
     }
 }
