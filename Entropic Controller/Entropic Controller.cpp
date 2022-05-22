@@ -158,6 +158,9 @@ void loadfile() {
     string line;
     long long int counter = 0;
     short charge;
+    long long int p[3];
+    long long int v[3];
+    long long int a[3];
     bool bound = false;
     file.open(filename);
     while (getline(file, line)) {
@@ -168,17 +171,33 @@ void loadfile() {
             cout << "Boundary: " << boundary << endl;
         }
         else {
-            /*
-            if (line == "Electron") {
-                charge = -1;
+            if (counter == 0) { //Particle number is discarded
+                counter++; 
             }
-            if (line == "Neutron") {
-                charge = 0;
+            if (counter == 1) { //Read the particle type
+                if (line == "Electron") {
+                    charge = -1;
+                }
+                if (line == "Neutron") {
+                    charge = 0;
+                }
+                if (line == "Proton") {
+                    charge = 1;
+                }
+                counter++;
+            if (counter == 2) { //Parse position
+
+                counter++;
             }
-            if (line == "Proton") {
-                charge = 1;
+            if (counter == 3) { //Parse velocity
+
+                counter++;
             }
-            */
+            if (counter == 4) { //Parse acceleration
+
+                counter = 0;
+            }
+            }
         }
     }
     file.close();
