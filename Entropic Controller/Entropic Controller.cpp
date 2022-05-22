@@ -21,7 +21,7 @@ public:
 string filename = "File not loaded";
 vector<particle> particles; //Vector of particles for selected (initial) .state file
 vector<particle> particles2; //Vector of particles for final .state file
-long long int boundary = 9223372036854775807; //The side length of the entropic controller cube
+long long int boundary = 9000000000000000000; //The side length of the entropic controller cube
 
 int menu() {
     short input = 0;
@@ -156,21 +156,29 @@ void setboundary() {
 void loadfile() {
     ifstream file;
     string line;
+    bool bound = false;
     file.open(filename);
     while (getline(file, line)) {
-        short charge;
-        cout << line << endl;
-        /*
-        if (line == "Electron") {
-            charge = -1;
+        if (bound == false) {
+            bound = true;
+            line.erase(0, 10);
+            boundary = stoll(line);
+            cout << "Boundary: " << boundary << endl;
         }
-        if (line == "Neutron") {
-            charge = 0;
+        else {
+            short charge;
+            /*
+            if (line == "Electron") {
+                charge = -1;
+            }
+            if (line == "Neutron") {
+                charge = 0;
+            }
+            if (line == "Proton") {
+                charge = 1;
+            }
+            */
         }
-        if (line == "Proton") {
-            charge = 1;
-        }
-        */
     }
     file.close();
 }
