@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include<fstream>
-#include<vector>
-#include<iterator>
+#include <fstream>
+#include <vector>
+#include <string>
 using namespace std;
 
 
@@ -21,6 +21,7 @@ public:
 string filename = "File not loaded";
 vector<particle> particles; //Vector of particles for selected (initial) .state file
 vector<particle> particles2; //Vector of particles for final .state file
+long long int boundary = 9223372036854775807; //The side length of the entropic controller cube
 
 int menu() {
     short input = 0;
@@ -32,11 +33,12 @@ int menu() {
     cout << "2. Select a file\n";
     cout << "3. Save to file\n";
     cout << "4. Load from file\n";
-    cout << "5. List particle data\n";
-    cout << "6. Add a particle\n";
-    cout << "7. Remove a particle\n";
-    cout << "8. Compute a solution\n";
-    cout << "9. Read a solution file\n";
+    cout << "5. Set boundary value\n";
+    cout << "6. List particle data\n";
+    cout << "7. Add a particle\n";
+    cout << "8. Remove a particle\n";
+    cout << "9. Compute a solution\n";
+    cout << "10. Read a solution file\n";
     cin >> input;
     return input;
 }
@@ -47,7 +49,7 @@ void createfile() {
     filename = filename + ".state";
     ofstream file;
     file.open(filename);
-    file.close();
+file.close();
 }
 
 void selectfile() {
@@ -99,6 +101,7 @@ void addparticle() {
 }
 
 void listdata() {
+    cout << "Boundary: " << boundary << endl;
     for (unsigned long long int i = 0; i < particles.size(); i++) {
         cout << "Particle " << i << ":" << endl;
         if (particles[i].type == -1) {
@@ -125,6 +128,7 @@ void removeparticle() {
 void savefile() {
     ofstream file;
     file.open(filename);
+    file << "Boundary: " << boundary << endl;
     for (unsigned long long int i = 0; i < particles.size(); i++) {
         file << "Particle " << i << ":" << endl;
         if (particles[i].type == -1) {
@@ -143,15 +147,37 @@ void savefile() {
     file.close();
 }
 
+void setboundary() {
+    cout << "Enter a boundary value: ";
+    cin >> boundary;
+}
+
 void loadfile() {
-    ofstream file;
+    ifstream file;
+    string line;
     file.open(filename);
+    
+    while (getline(file, line)) {
+        short charge;
+        cout << line << endl;
+        /*
+        if (line == "Electron") {
+            charge = -1;
+        }
+        if (line == "Neutron") {
+            charge = 0;
+        }
+        if (line == "Proton") {
+            charge = 1;
+        }
+        */
+    }
     file.close();
 }
 
 int main()
 {
-    short input = 10;
+    short input = 100;
     while (input != 0) {
         input = menu();
         if (input == 1) {
@@ -167,12 +193,15 @@ int main()
             loadfile();
         }
         if (input == 5) {
-            listdata();
+            setboundary();
         }
         if (input == 6) {
-            addparticle();
+            listdata();
         }
         if (input == 7) {
+            addparticle();
+        }
+        if (input == 8) {
             removeparticle();
         }
     }

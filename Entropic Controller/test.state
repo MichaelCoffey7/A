@@ -1,5 +1,6 @@
+Boundary: 9223372036854775807
 Particle 0:
-   Neutron
-   Position: (435, 56454, 43543)
-   Velcity: (543532, 57656, 432536)
-   Acceleration: (756, 345, 54645)
+   Electron
+   Position: (324325, 5465436, 234523)
+   Velcity: (3465, 43534, 43534)
+   Acceleration: (534, 43543, 43543543)
