@@ -4,6 +4,7 @@
 #include <iostream>
 #include<fstream>
 #include<vector>
+#include<iterator>
 using namespace std;
 
 
@@ -98,7 +99,7 @@ void addparticle() {
 }
 
 void listdata() {
-    for (long long int i = 0; i < particles.size(); i++) {
+    for (unsigned long long int i = 0; i < particles.size(); i++) {
         cout << "Particle " << i << ":" << endl;
         if (particles[i].type == -1) {
             cout << "   Electron" << endl;
@@ -122,11 +123,30 @@ void removeparticle() {
 }
 
 void savefile() {
-
+    ofstream file;
+    file.open(filename);
+    for (unsigned long long int i = 0; i < particles.size(); i++) {
+        file << "Particle " << i << ":" << endl;
+        if (particles[i].type == -1) {
+            file << "   Electron" << endl;
+        }
+        if (particles[i].type == 0) {
+            file << "   Neutron" << endl;
+        }
+        if (particles[i].type == 1) {
+            file << "   Proton" << endl;
+        }
+        file << "   Position: (" << particles[i].position[0] << ", " << particles[i].position[1] << ", " << particles[i].position[2] << ")" << endl;
+        file << "   Velcity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
+        file << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
+    }
+    file.close();
 }
 
 void loadfile() {
-
+    ofstream file;
+    file.open(filename);
+    file.close();
 }
 
 int main()
