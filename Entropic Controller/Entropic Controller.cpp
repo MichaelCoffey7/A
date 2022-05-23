@@ -20,6 +20,7 @@ public:
 };
 
 string filename = "File not loaded";
+string filename2 = "File not loaded";
 vector<particle> particles; //Vector of particles for selected (initial) .state file
 vector<particle> particles2; //Vector of particles for final .state file
 long long int boundary = 8000000000000000000; //The side length of the entropic controller cube
@@ -161,7 +162,7 @@ void setboundary() {
     cout << endl;
 }
 
-void loadfile() {
+void loadfile() { //Load the first file
     ifstream file;
     string line;
     short counter = 0;
@@ -170,7 +171,6 @@ void loadfile() {
     long long int v[3];
     long long int a[3];
     bool bound = false;
-    char* endptr;
     file.open(filename);
     while (getline(file, line)) {
         if (bound == false) {
@@ -248,6 +248,97 @@ void loadfile() {
     file.close();
 }
 
+void loadfile2() { //Load the second file
+    ifstream file2;
+    string line;
+    short counter = 0;
+    short charge;
+    long long int p[3];
+    long long int v[3];
+    long long int a[3];
+    bool bound = false;
+    file2.open(filename);
+    while (getline(file2, line)) {
+        if (bound == false) {
+            bound = true;
+            line.erase(0, 10);
+            boundary = stoll(line);
+        }
+        else {
+            switch (counter) {
+            case 0: //Particle number is discarded
+                counter++;
+                break;
+            case 1: //Read the particle type
+                line.erase(0, 3);
+                if (line == "Electron") {
+                    charge = -1;
+                }
+                if (line == "Neutron") {
+                    charge = 0;
+                }
+                if (line == "Proton") {
+                    charge = 1;
+                }
+                counter++;
+                break;
+            case 2: //Parse position
+                line.erase(0, 14);
+                p[0] = stoll(line);
+                line.erase(0, line.find(" ") + 1);
+                p[1] = stoll(line);
+                line.erase(0, line.find(" ") + 1);
+                p[2] = stoll(line);
+                counter++;
+                break;
+            case 3: //Parse velocity
+                line.erase(0, 13);
+                v[0] = stoll(line);
+                line.erase(0, line.find(" ") + 1);
+                v[1] = stoll(line);
+                line.erase(0, line.find(" ") + 1);
+                v[2] = stoll(line);
+                counter++;
+                break;
+            case 4: //Parse acceleration and create the object
+                line.erase(0, 18);
+                a[0] = stoll(line);
+                line.erase(0, line.find(" ") + 1);
+                a[1] = stoll(line);
+                line.erase(0, line.find(" ") + 1);
+                a[2] = stoll(line);
+                //Create the object
+                particle particle;
+                particle.type = charge;
+                particle.position[0] = p[0];
+                particle.position[1] = p[1];
+                particle.position[2] = p[2];
+                particle.velocity[0] = v[0];
+                particle.velocity[1] = v[1];
+                particle.velocity[2] = v[2];
+                particle.acceleration[0] = a[0];
+                particle.acceleration[1] = a[1];
+                particle.acceleration[2] = a[2];
+                particles2.push_back(particle);
+                counter = 0;
+                break;
+            }
+        }
+    }
+    file2.close();
+}
+
+void computesolution() {
+    cout << "Enter the file name of the second file: ";
+    cin >> filename2;
+    filename2 = filename2 + ".state";
+    cout << "Initial state: " << filename << endl;
+    cout << "Final state: " << filename2 << endl;
+    loadfile2();
+    //Computational code goes here
+    cout << endl;
+}
+
 int main()
 {
     short input = 100;
@@ -276,6 +367,9 @@ int main()
         }
         if (input == 8) {
             removeparticle();
+        }
+        if (input == 9) {
+            computesolution();
         }
     }
 }
