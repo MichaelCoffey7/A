@@ -24,6 +24,7 @@ public:
 
 string filename = "File not loaded";
 string filename2 = "File not loaded";
+string solutionfile = "File not loaded";
 vector<particle> particles; //Vector of particles for selected (initial) .state file
 vector<particle> particles2; //Vector of particles for final .state file
 long long int boundary = 8000000000000000000; //The side length of the entropic controller cube
@@ -43,7 +44,7 @@ int menu() {
     cout << "6. List particle data\n";
     cout << "7. Add a particle\n";
     cout << "8. Remove a particle\n";
-    cout << "9. Simulate time";
+    cout << "9. Simulate time\n";
     cout << "10. Compute a solution\n";
     cout << "11. Read a solution file\n";
     cout << "Selection: ";
@@ -343,6 +344,9 @@ void computesolution() {
     cout << "Initial state: " << filename << endl;
     cout << "Final state: " << filename2 << endl;
     loadfile2();
+    cout << "Enter name of solution file: ";
+    cin >> solutionfile;
+    solutionfile = solutionfile + ".solution";
     //Computational code goes here
     cout << endl;
 }
