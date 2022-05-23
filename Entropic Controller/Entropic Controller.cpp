@@ -164,6 +164,7 @@ void setboundary() {
 }
 
 void loadfile() { //Load the first file
+    particles.clear();
     ifstream file;
     string line;
     short counter = 0;
@@ -251,6 +252,7 @@ void loadfile() { //Load the first file
 }
 
 void loadfile2() { //Load the second file
+    particles2.clear();
     ifstream file2;
     string line;
     short counter = 0;
