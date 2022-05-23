@@ -5,6 +5,7 @@
 #include <fstream>
 #include <vector>
 #include <string>
+#include <algorithm>
 using namespace std;
 
 
@@ -41,6 +42,7 @@ int menu() {
     cout << "10. Read a solution file\n";
     cout << "Selection: ";
     cin >> input;
+    cout << endl;
     return input;
 }
 
@@ -48,6 +50,7 @@ void createfile() {
     cout << "Enter a file name: ";
     cin >> filename;
     filename = filename + ".state";
+    cout << endl;
     ofstream file;
     file.open(filename);
 file.close();
@@ -57,6 +60,7 @@ void selectfile() {
     cout << "Enter a file name: ";
     cin >> filename;
     filename = filename + ".state";
+    cout << endl;
 }
 
 void addparticle() {
@@ -99,6 +103,7 @@ void addparticle() {
     particle.acceleration[1] = a[1];
     particle.acceleration[2] = a[2];
     particles.push_back(particle);
+    cout << endl;
 }
 
 void listdata() {
@@ -118,12 +123,14 @@ void listdata() {
         cout << "   Velcity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
         cout << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
     }
+    cout << endl;
 }
 void removeparticle() {
     long long int particlenumber;
     cout << "Enter the particle number to remove: ";
     cin >> particlenumber;
     particles.erase(particles.begin() + particlenumber);
+    cout << endl;
 }
 
 void savefile() {
@@ -151,17 +158,19 @@ void savefile() {
 void setboundary() {
     cout << "Enter a boundary value: ";
     cin >> boundary;
+    cout << endl;
 }
 
 void loadfile() {
     ifstream file;
     string line;
-    long long int counter = 0;
+    short counter = 0;
     short charge;
     long long int p[3];
     long long int v[3];
     long long int a[3];
     bool bound = false;
+    char* endptr;
     file.open(filename);
     while (getline(file, line)) {
         if (bound == false) {
@@ -171,32 +180,68 @@ void loadfile() {
             cout << "Boundary: " << boundary << endl;
         }
         else {
-            if (counter == 0) { //Particle number is discarded
-                counter++; 
-            }
-            if (counter == 1) { //Read the particle type
-                if (line == "Electron") {
-                    charge = -1;
-                }
-                if (line == "Neutron") {
-                    charge = 0;
-                }
-                if (line == "Proton") {
-                    charge = 1;
-                }
-                counter++;
-            if (counter == 2) { //Parse position
-
-                counter++;
-            }
-            if (counter == 3) { //Parse velocity
-
-                counter++;
-            }
-            if (counter == 4) { //Parse acceleration
-
-                counter = 0;
-            }
+            switch (counter) {
+                case 0: //Particle number is discarded
+                    cout << line << endl;
+                    counter++;
+                    break;
+                case 1: //Read the particle type
+                    cout << line << endl;
+                    line.erase(0, 3);
+                    if (line == "Electron") {
+                        charge = -1;
+                    }
+                    if (line == "Neutron") {
+                        charge = 0;
+                    }
+                    if (line == "Proton") {
+                        charge = 1;
+                    }
+                    counter++;
+                    break;
+                case 2: //Parse position
+                    cout << line << endl;
+                    line.erase(0, 14);
+                    p[0] = stoll(line);
+                    line.erase(0, line.find(" ")+1);
+                    p[1] = stoll(line);
+                    line.erase(0, line.find(" ") + 1);
+                    p[2] = stoll(line);
+                    counter++;
+                    break;
+                case 3: //Parse velocity
+                    cout << line << endl;
+                    line.erase(0, 13);
+                    v[0] = stoll(line);
+                    line.erase(0, line.find(" ") + 1);
+                    v[1] = stoll(line);
+                    line.erase(0, line.find(" ") + 1);
+                    v[2] = stoll(line);
+                    counter++;
+                    break;
+                case 4: //Parse acceleration and create the object
+                    cout << line << endl;
+                    line.erase(0, 18);
+                    a[0] = stoll(line);
+                    line.erase(0, line.find(" ") + 1);
+                    a[1] = stoll(line);
+                    line.erase(0, line.find(" ") + 1);
+                    a[2] = stoll(line);
+                    //Create the object
+                    particle particle;
+                    particle.type = charge;
+                    particle.position[0] = p[0];
+                    particle.position[1] = p[1];
+                    particle.position[2] = p[2];
+                    particle.velocity[0] = v[0];
+                    particle.velocity[1] = v[1];
+                    particle.velocity[2] = v[2];
+                    particle.acceleration[0] = a[0];
+                    particle.acceleration[1] = a[1];
+                    particle.acceleration[2] = a[2];
+                    particles.push_back(particle);
+                    counter = 0;
+                    break;
             }
         }
     }
