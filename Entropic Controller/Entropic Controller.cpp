@@ -43,8 +43,9 @@ int menu() {
     cout << "6. List particle data\n";
     cout << "7. Add a particle\n";
     cout << "8. Remove a particle\n";
-    cout << "9. Compute a solution\n";
-    cout << "10. Read a solution file\n";
+    cout << "9. Simulate time";
+    cout << "10. Compute a solution\n";
+    cout << "11. Read a solution file\n";
     cout << "Selection: ";
     cin >> input;
     cout << endl;
@@ -375,7 +376,7 @@ int main()
         if (input == 8) {
             removeparticle();
         }
-        if (input == 9) {
+        if (input == 10) {
             computesolution();
         }
     }
