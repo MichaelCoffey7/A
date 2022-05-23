@@ -55,7 +55,7 @@ void createfile() {
     cout << endl;
     ofstream file;
     file.open(filename);
-file.close();
+    file.close();
 }
 
 void selectfile() {
