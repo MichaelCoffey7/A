@@ -128,7 +128,7 @@ void listdata() {
     cout << endl;
 }
 void removeparticle() {
-    long long int particlenumber;
+    unsigned long long int particlenumber;
     cout << "Enter the particle number to remove: ";
     cin >> particlenumber;
     particles.erase(particles.begin() + particlenumber);
