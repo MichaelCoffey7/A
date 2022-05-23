@@ -8,7 +8,8 @@
 #include <algorithm>
 using namespace std;
 
-
+//1 entropic unit = 0.1626am (attometers)
+//The entropic controller can control entropy within a 3 meter by 3 meter cube
 
 class particle {
 public:
