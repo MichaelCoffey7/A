@@ -150,7 +150,7 @@ void savefile() {
             file << "   Proton" << endl;
         }
         file << "   Position: (" << particles[i].position[0] << ", " << particles[i].position[1] << ", " << particles[i].position[2] << ")" << endl;
-        file << "   Velcity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
+        file << "   Velocity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
         file << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
     }
     file.close();
@@ -211,7 +211,7 @@ void loadfile() { //Load the first file
                     break;
                 case 3: //Parse velocity
                     cout << line << endl;
-                    line.erase(0, 13);
+                    line.erase(0, 14);
                     v[0] = stoll(line);
                     line.erase(0, line.find(" ") + 1);
                     v[1] = stoll(line);
@@ -292,7 +292,7 @@ void loadfile2() { //Load the second file
                 counter++;
                 break;
             case 3: //Parse velocity
-                line.erase(0, 13);
+                line.erase(0, 14);
                 v[0] = stoll(line);
                 line.erase(0, line.find(" ") + 1);
                 v[1] = stoll(line);
