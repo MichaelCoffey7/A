@@ -24,6 +24,7 @@ string filename2 = "File not loaded";
 vector<particle> particles; //Vector of particles for selected (initial) .state file
 vector<particle> particles2; //Vector of particles for final .state file
 long long int boundary = 8000000000000000000; //The side length of the entropic controller cube
+long long int boundary2 = 8000000000000000000; //The side length of the entropic controller cube
 
 int menu() {
     short input = 0;
@@ -246,6 +247,7 @@ void loadfile() { //Load the first file
         }
     }
     file.close();
+    cout << endl;
 }
 
 void loadfile2() { //Load the second file
@@ -262,7 +264,7 @@ void loadfile2() { //Load the second file
         if (bound == false) {
             bound = true;
             line.erase(0, 10);
-            boundary = stoll(line);
+            boundary2 = stoll(line);
         }
         else {
             switch (counter) {
