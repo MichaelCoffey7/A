@@ -9,7 +9,7 @@
 using namespace std;
 
 //1 entropic unit = 0.1626am (attometers)
-//The entropic controller can control entropy within a 3 meter by 3 meter cube
+//The entropic controller can control entropy within a 2.9 meter by 2.9 meter cube
 
 class particle {
 public:
