@@ -43,7 +43,7 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
     return true;
 }
 
-void checkbound() { //Sequentially checks all input particles if they are within the boundary and erases them if they are not
+void checkbound(vector<particle> particles) { //Sequentially checks all input particles if they are within the boundary and erases them if they are not
     for (unsigned long long int i = 0; i < particles.size(); i++) {
         if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
             particles.erase(particles.begin() + i);
