@@ -30,6 +30,27 @@ vector<particle> particles2; //Vector of particles for final .state file
 long long int boundary = 8000000000000000000; //The side length of the entropic controller cube
 long long int boundary2 = 8000000000000000000; //The side length of the entropic controller cube
 
+bool withinbound(particle particle) { //Checks if the input particle is within the boundary
+    if (abs(particle.position[0]) > boundary) {
+        return false;
+    }
+    if (abs(particle.position[1]) > boundary) {
+        return false;
+    }
+    if (abs(particle.position[2]) > boundary) {
+        return false;
+    }
+    return true;
+}
+
+void checkbound() { //Sequentially checks all input particles if they are within the boundary and erases them if they are not
+    for (unsigned long long int i = 0; i < particles.size(); i++) {
+        if (!withinbound(particles[i])) {
+            particles.erase(particles.begin() + i);
+        }
+    }
+}
+
 int menu() {
     short input = 0;
     cout << "Entropic Controller\n";
