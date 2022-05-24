@@ -51,6 +51,17 @@ void checkbound(vector<particle> particles) { //Sequentially checks all input pa
     }
 }
 
+void kinematictick(particle particle) { //Process a kinematic tick for the particle
+    //Update the velocity based on the acceleration
+    particle.velocity[0] += particle.acceleration[0];
+    particle.velocity[1] += particle.acceleration[1];
+    particle.velocity[2] += particle.acceleration[2];
+    //Update the position based on the velocity
+    particle.position[0] += particle.velocity[0];
+    particle.position[1] += particle.velocity[1];
+    particle.position[2] += particle.velocity[2];
+}
+
 int menu() {
     short input = 0;
     cout << "Entropic Controller\n";
