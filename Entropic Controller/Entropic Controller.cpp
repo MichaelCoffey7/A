@@ -43,23 +43,26 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
     return true;
 }
 
-void checkbound(vector<particle> particles) { //Sequentially checks all input particles if they are within the boundary and erases them if they are not
-    for (unsigned long long int i = 0; i < particles.size(); i++) {
-        if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
-            particles.erase(particles.begin() + i);
-        }
-    }
-}
-
 void kinematictick(particle particle) { //Process a kinematic tick for the particle
     //Update the position based on the velocity
     particle.position[0] += particle.velocity[0];
     particle.position[1] += particle.velocity[1];
     particle.position[2] += particle.velocity[2];
-   //Update the velocity based on the acceleration
+    //Update the velocity based on the acceleration
     particle.velocity[0] += particle.acceleration[0];
     particle.velocity[1] += particle.acceleration[1];
     particle.velocity[2] += particle.acceleration[2];
+}
+
+void updatetick(vector<particle> particles) {  //Run one tick of the simulation for the vector of particles
+    for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
+        //Update the kinematic values for the particle
+        kinematictick(particles[i]);
+        //Sequentially checks all input particles if they are within the boundary and erases them if they are not
+        if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
+            particles.erase(particles.begin() + i);
+        }
+    }
 }
 
 int menu() {
