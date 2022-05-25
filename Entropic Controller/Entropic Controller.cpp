@@ -11,7 +11,7 @@ using namespace std;
 //The entropic controller can control entropy within a 3 meter by 3 meter cube
 //1 entropic tick = 2as (attoseconds)
 //The entropic controller can simulate time 30 seconds
-//Every entropic tick (2as) the minimum movement of a particle is one entropic length (0.2am); the minimum speed of a particle is 0.2am/2as or 0.1m/s
+//Every entropic tick (2as) the minimum movement of a particle is one entropic length (0.2am); the minimum speed of a particle is 0.2am/2as
 //The time for a single electron to orbit a hydrogen atom is 24as or 12 entropic ticks and the orbit velocity is 2.18*10^6 m/s
 
 class particle {
