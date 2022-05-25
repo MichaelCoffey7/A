@@ -20,7 +20,8 @@ public:
     long long int velocity[3];
     long long int acceleration[3];
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
-    long long int inputtime; //The time the particle appears at the edge of the cube, for solution files
+    bool inputparticle = false; //True if the particle is an input particle, false if it is not
+    unsigned long long int inputtime; //The time the particle appears at the edge of the cube, for solution files; only for input particles
 };
 
 string filename = "File not loaded";
