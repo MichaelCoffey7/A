@@ -20,9 +20,7 @@ public:
     long long int velocity[3];
     long long int acceleration[3];
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
-    //The following are for input particles: particles injected at a specific time at the edge of the cube to alter the state of the cube to the desired final state
-    bool inputparticle = false; //True if the particle is an input particle, false if it is not
-    unsigned long long int inputtime; //The time the particle appears at the edge of the cube
+    unsigned long long int injectiontime; //For input particles, the time the particle appears at the edge of the cube
 };
 
 string filename = "File not loaded";
@@ -30,6 +28,7 @@ string filename2 = "File not loaded";
 string solutionfile = "File not loaded";
 vector<particle> particles; //Vector of particles for selected (initial) .state file
 vector<particle> particles2; //Vector of particles for final .state file
+vector<particle> inputparticles //Vector of particles to inject at edges of the cube
 long long int boundary = 8000000000000000000; //The side length of the entropic controller cube
 long long int boundary2 = 8000000000000000000; //The side length of the entropic controller cube
 
