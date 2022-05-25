@@ -9,8 +9,8 @@ using namespace std;
 
 //1 entropic length = 0.2am (attometers)
 //The entropic controller can control entropy within a 3 meter by 3 meter cube
-//1 entropic tick = 20as (attoseconds)
-//The entropic controller can simulate time for 6 minutes
+//1 entropic tick = 200as (attoseconds)
+//The entropic controller can simulate time for 1 hour
 
 class particle {
 public:
