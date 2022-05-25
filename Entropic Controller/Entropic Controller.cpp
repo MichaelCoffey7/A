@@ -8,7 +8,7 @@
 #include <algorithm>
 using namespace std;
 
-//1 entropic unit = 0.2am (attometers)
+//1 entropic length = 0.2am (attometers)
 //The entropic controller can control entropy within a 3 meter by 3 meter cube
 //1 entropic tick = 40as (attoseconds)
 //The entropic controller can simulate time for 10 minutes
