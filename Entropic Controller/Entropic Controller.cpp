@@ -30,8 +30,8 @@ string solutionfile = "File not loaded";
 vector<particle> particles; //Vector of particles for selected (initial) .state file
 vector<particle> particles2; //Vector of particles for final .state file
 vector<particle> inputparticles; //Vector of particles to inject at edges of the cube
-long long int boundary = 8000000000000000000; //The side length of the entropic controller cube
-long long int boundary2 = 8000000000000000000; //The side length of the entropic controller cube
+long long int boundary = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
+long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
     if (abs(particle.position[0]) > boundary) {
