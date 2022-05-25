@@ -15,11 +15,11 @@ using namespace std;
 
 class particle {
 public:
+    short type; //The type of particle: -1 electron, 0 neutron, 1 proton
     //Define the kinematic values for particles
     long long int position[3];
     long long int velocity[3];
     long long int acceleration[3];
-    short type; //The type of particle: -1 electron, 0 neutron, 1 proton
     unsigned long long int injectiontime; //For input particles, the time the particle appears at the edge of the cube
 };
 
