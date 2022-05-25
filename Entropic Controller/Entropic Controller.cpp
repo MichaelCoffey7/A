@@ -20,8 +20,9 @@ public:
     long long int velocity[3];
     long long int acceleration[3];
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
+    //The following are for input particles: particles injected at a specific time at the edge of the cube to alter the state of the cube to the desired final state
     bool inputparticle = false; //True if the particle is an input particle, false if it is not
-    unsigned long long int inputtime; //The time the particle appears at the edge of the cube, for solution files; only for input particles
+    unsigned long long int inputtime; //The time the particle appears at the edge of the cube
 };
 
 string filename = "File not loaded";
