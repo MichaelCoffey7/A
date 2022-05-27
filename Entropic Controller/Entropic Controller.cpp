@@ -389,6 +389,14 @@ void computesolution() {
     cout << endl;
 }
 
+void simulatetime() {
+
+}
+
+void readsolution() {
+
+}
+
 int main()
 {
     short input = 100;
@@ -418,8 +426,14 @@ int main()
         if (input == 8) {
             removeparticle();
         }
+        if (input == 9) {
+            simulatetime();
+        }
         if (input == 10) {
             computesolution();
+        }
+        if (input == 11) {
+            readsolution();
         }
     }
 }
