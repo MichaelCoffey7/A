@@ -221,9 +221,9 @@ void loadfile() { //Load the first file
     while (getline(file, line)) {
         if (bound == false) {
             bound = true;
+            cout << line << endl;
             line.erase(0, 10);
             boundary = stoll(line);
-            cout << "Boundary: " << boundary << endl;
         }
         else {
             switch (counter) {
