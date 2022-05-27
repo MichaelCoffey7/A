@@ -220,10 +220,10 @@ void loadfile() { //Load the first file
     file.open(filename);
     while (getline(file, line)) {
         if (bound == false) {
-            bound = true;
             cout << line << endl;
             line.erase(0, 10);
             boundary = stoll(line);
+            bound = true;
         }
         else {
             switch (counter) {
