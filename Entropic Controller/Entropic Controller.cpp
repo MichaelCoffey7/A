@@ -308,9 +308,9 @@ void loadfile2() { //Load the second file
     file2.open(filename);
     while (getline(file2, line)) {
         if (bound == false) {
-            bound = true;
             line.erase(0, 10);
             boundary2 = stoll(line);
+            bound = true;
         }
         else {
             switch (counter) {
