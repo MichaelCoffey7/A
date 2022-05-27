@@ -210,6 +210,7 @@ void loadfile() { //Load the first file
     particles.clear();
     ifstream file;
     string line;
+    particle particle;
     short counter = 0;
     short charge;
     long long int p[3];
@@ -273,7 +274,6 @@ void loadfile() { //Load the first file
                     line.erase(0, line.find(" ") + 1);
                     a[2] = stoll(line);
                     //Create the object
-                    particle particle;
                     particle.type = charge;
                     particle.position[0] = p[0];
                     particle.position[1] = p[1];
@@ -298,6 +298,7 @@ void loadfile2() { //Load the second file
     particles2.clear();
     ifstream file2;
     string line;
+    particle particle;
     short counter = 0;
     short charge;
     long long int p[3];
@@ -355,7 +356,6 @@ void loadfile2() { //Load the second file
                 line.erase(0, line.find(" ") + 1);
                 a[2] = stoll(line);
                 //Create the object
-                particle particle;
                 particle.type = charge;
                 particle.position[0] = p[0];
                 particle.position[1] = p[1];
