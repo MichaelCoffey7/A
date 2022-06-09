@@ -33,6 +33,7 @@ vector<particle> particles; //Vector of particles for selected (initial) .state 
 vector<particle> particles2; //Vector of particles for final .state file
 vector<particle> inputparticles; //Vector of particles to inject at edges of the cube
 
+//For future refactoring:
 vector<particle> electrons; //Vector of electron particles, for calculating electric field e1
 vector<particle> protons; //Vector of proton particles, for calculating electric field e2 and strong interaction field s1
 vector<particle> neutrons; //Vector of neutron particles, for calculating strong interaction field s2
