@@ -39,19 +39,19 @@ vector<particle> inputparticles; //Vector of particles to inject at edges of the
 long long int boundary = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
-long long int calculatestrongforce() { //Calculate the strong force field for all particles
+long long int calculatestrongforce(particle particle) { //Calculate the strong force field for all particles
     return 0;
 }
 
-long long int calculatemforce() { //Calculate the electromagnetic force field for all particles
+long long int calculatemforce(particle particle) { //Calculate the electromagnetic force field for all particles
     return 0;
 }
 
-long long int calculategravityforce() { //Calculate the gravity force field for all particles
+long long int calculategravityforce(particle particle) { //Calculate the gravity force field for all particles
     return 0;
 }
 
-long long int calculateforce() { //Sum the forces calculated
+long long int calculateforce(particle particle) { //Sum the forces calculated
     return 0;
 }
 
@@ -77,6 +77,7 @@ void kinematictick(particle particle) { //Process a kinematic tick for the parti
     particle.velocity[0] += particle.acceleration[0];
     particle.velocity[1] += particle.acceleration[1];
     particle.velocity[2] += particle.acceleration[2];
+    //Update the acceleration based on the force
 }
 
 void updatetick(vector<particle> particles) {  //Run one tick of the simulation for the vector of particles
