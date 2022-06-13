@@ -69,15 +69,18 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
 }
 
 void kinematictick(particle particle) { //Process a kinematic tick for the particle
-    //Update the position based on the velocity
-    particle.position[0] += particle.velocity[0];
-    particle.position[1] += particle.velocity[1];
-    particle.position[2] += particle.velocity[2];
+    //Update the acceleration based on the force
+    
     //Update the velocity based on the acceleration
     particle.velocity[0] += particle.acceleration[0];
     particle.velocity[1] += particle.acceleration[1];
     particle.velocity[2] += particle.acceleration[2];
-    //Update the acceleration based on the force
+    //Update the position based on the velocity
+    particle.position[0] += particle.velocity[0];
+    particle.position[1] += particle.velocity[1];
+    particle.position[2] += particle.velocity[2];
+
+    
 }
 
 void updatetick(vector<particle> particles) {  //Run one tick of the simulation for the vector of particles
