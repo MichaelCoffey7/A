@@ -51,7 +51,11 @@ long long int calculategravityforce(particle particle) { //Calculate the gravity
     return 0;
 }
 
-long long int calculateforce(particle particle) { //Sum the forces calculated
+long long int calculatehyperforce(particle particle) { //Traditional force calculations will not operate with regards to the bounds of our percision - hyperforce is a compensating force for this
+    return 0;
+}
+
+long long int calculateforce(particle particle) { //Sum the forces calculated = strongforce + emforce + gravityforce + hyperforce(or comepensationforce)
     return 0;
 }
 
