@@ -100,25 +100,6 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
         //THIS PART DOESN'T WORK YET!!!
         //It's one very very very long equation... whoever derives it gets a cookie!
         
-        //Load the registers with the values
-        unsigned long long int k1 = 24891*10^4; //E4
-        unsigned long long int q1 = 1;
-        unsigned long long int q2 = 1;
-        unsigned long long int k2 = 8988*10^9; //E9
-        long long int e1 = particles[i].type; //the particle selected
-        long long int e2 = sumcharges(); //the sum of all other particles
-        unsigned long long int k3 = 6674; //E-11
-        unsigned long long int k3f = 10 ^ 11; //Factor k3 by this number
-        unsigned long long int g1 = particles[i].mass;
-        unsigned long long int g2 = totalmass(particles[i]);
-        unsigned long long int r = particlescom(particles[i], 1);
-        unsigned long long int m = particles[i].mass;
-        unsigned long long int mf1 = 10 ^ 16;
-        unsigned long long int mf2 = 10 ^ 15;
-        particles[i].acceleration[0] = (((k1 * q1 * q2) / (r ^ 2)) + ((k2 * e1 * e2) / (r ^ 2)) + ((k3 * g1 * g2) / (k3f * (r ^ 2)))) / (m / ( mf1 + mf2 ));
-        //particles[i].acceleration[1] =
-        //particles[i].acceleration[2] = 
-        
         //Update the kinematic values for the particle
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
