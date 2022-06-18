@@ -41,14 +41,6 @@ vector<particle> inputparticles; //Vector of particles to inject at edges of the
 long long int boundary = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
-long long int calculatestrongforce(particle particle, short dimension) { //Calculate the strong force field for all particles
-    return 0;
-}
-
-long long int calculateemforce(particle particle, short dimension) { //Calculate the electromagnetic force field for all particles
-    return 0;
-}
-
 long long int totalmass(particle particle) { //Returns total mass of all particles except the selected particle
     unsigned long long int mass = 0;
     for (unsigned long long int i = 0; i < particles.size(); i++) {
@@ -65,15 +57,6 @@ long long int particlescom(particle particle, short dimension) {
     }
     position -= particle.position[dimension];
     return position;
-}
-
-long long int calculategravityforce(particle particle, short dimension) { //Calculate the gravity force field for all particles
-    //Welcome to HELL!
-    return 0;
-}
-
-long long int calculateforce(particle particle, short dimension) { //Sum the forces calculated = strongforce + emforce + gravityforce + hyperforce(or comepensationforce)
-    return calculategravityforce(particle, dimension) + calculateemforce(particle, dimension) + calculatestrongforce(particle, dimension);
 }
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
@@ -108,9 +91,11 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         //Update acceleration for the particle based on force
         //THIS PART DOESN'T WORK YET!!!
-        particles[i].acceleration[0] = calculateforce(particles[i], 0) / particles[i].mass;
-        particles[i].acceleration[1] = calculateforce(particles[i], 1) / particles[i].mass;
-        particles[i].acceleration[2] = calculateforce(particles[i], 2) / particles[i].mass;
+        /*
+        particles[i].acceleration[0] = 
+        particles[i].acceleration[1] =
+        particles[i].acceleration[2] = 
+        */
         //Update the kinematic values for the particle
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
