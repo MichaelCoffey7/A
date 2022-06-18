@@ -104,7 +104,7 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
         unsigned long long int g2 = 0;
         unsigned long long int r = 0;
         unsigned long long int m = 0;
-        particles[i].acceleration[0] = ((k1 * q1 * q2) / (r ^ 2) + (k2 * e1 * e2) / (r ^ 2) + (k3 * g1 * g2) / (r ^ 2)) / m;
+        particles[i].acceleration[0] = (((k1 * q1 * q2) / (r ^ 2)) + ((k2 * e1 * e2) / (r ^ 2)) + ((k3 * g1 * g2) / (r ^ 2))) / m;
         //particles[i].acceleration[1] =
         //particles[i].acceleration[2] = 
         
