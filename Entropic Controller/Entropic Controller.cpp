@@ -20,6 +20,7 @@ using namespace std;
 class particle {
 public:
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
+    long long int mass; //The mass of the particle
     //Define the kinematic values for particles
     long long int position[3];
     long long int velocity[3];
@@ -72,9 +73,23 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
     return true;
 }
 
+void setmass(particle particle) { //Sets the mass of the particle equal to its type
+    if (particle.type == -1) { //Electron
+        particle.mass = 9109383632; //10^-31kg
+    }
+    if (particle.type == 0) { //Neutron
+        particle.mass = 167492749; //10^-27kg
+        particle.mass = particle.mass * 10 ^ 4; //10^31kg
+    }
+    if (particle.type == 1) { //Proton
+        particle.mass = 167262191; //10^-27kg
+        particle.mass = particle.mass * 10 ^ 4; //10^31kg
+    }
+}
+
 void kinematictick(particle particle) { //Process a kinematic tick for the particle
     //Update the acceleration based on the force
-    
+    //particle.acceleration[0]
     //Update the velocity based on the acceleration
     particle.velocity[0] += particle.acceleration[0];
     particle.velocity[1] += particle.acceleration[1];
@@ -177,6 +192,7 @@ void addparticle() {
     particle.acceleration[0] = a[0];
     particle.acceleration[1] = a[1];
     particle.acceleration[2] = a[2];
+    setmass(particle);
     particles.push_back(particle);
     cout << endl;
 }
@@ -314,6 +330,7 @@ void loadfile() { //Load the first file
                     particle.acceleration[0] = a[0];
                     particle.acceleration[1] = a[1];
                     particle.acceleration[2] = a[2];
+                    setmass(particle);
                     particles.push_back(particle);
                     counter = 0;
                     break;
@@ -396,6 +413,7 @@ void loadfile2() { //Load the second file
                 particle.acceleration[0] = a[0];
                 particle.acceleration[1] = a[1];
                 particle.acceleration[2] = a[2];
+                setmass(particle);
                 particles2.push_back(particle);
                 counter = 0;
                 break;
