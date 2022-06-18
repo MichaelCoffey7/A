@@ -94,8 +94,8 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
         
         //Load the registers with the values
         unsigned long long int k1 = 0;
-        unsigned long long int q1 = 0;
-        unsigned long long int q2 = 0;
+        unsigned long long int q1 = 1;
+        unsigned long long int q2 = 1;
         unsigned long long int k2 = 0;
         long long int e1 = 0;
         long long int e2 = 0;
