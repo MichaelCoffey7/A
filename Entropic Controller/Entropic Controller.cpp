@@ -109,25 +109,10 @@ void setmass(particle particle) { //Sets the mass of the particle equal to its t
     }
 }
 
-void kinematictick(particle particle) { //Process a kinematic tick for the particle
-    //Update the acceleration based on the force
-    particle.acceleration[0] = calculateforce(particle, 0) / particle.mass;
-    particle.acceleration[1] = calculateforce(particle, 1) / particle.mass;
-    particle.acceleration[2] = calculateforce(particle, 2) / particle.mass;
-    //Update the velocity based on the acceleration
-    particle.velocity[0] += particle.acceleration[0];
-    particle.velocity[1] += particle.acceleration[1];
-    particle.velocity[2] += particle.acceleration[2];
-    //Update the position based on the velocity
-    particle.position[0] += particle.velocity[0];
-    particle.position[1] += particle.velocity[1];
-    particle.position[2] += particle.velocity[2];
-}
-
 void updatetick(vector<particle> particles) {  //Run one tick of the simulation for the vector of particles
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         //Update the kinematic values for the particle
-        kinematictick(particles[i]);
+        particles[i].position[0] = particles[i].velocity[0];
         //Sequentially checks all input particles if they are within the boundary and erases them if they are not
         if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
             particles.erase(particles.begin() + i);
@@ -233,7 +218,7 @@ void listdata() {
             cout << "   Proton" << endl;
         }
         cout << "   Position: (" << particles[i].position[0] << ", " << particles[i].position[1] << ", " << particles[i].position[2] << ")" << endl;
-        cout << "   Velcity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
+        cout << "   Velocity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
         cout << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
     }
     cout << endl;
