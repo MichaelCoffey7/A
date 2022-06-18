@@ -116,7 +116,7 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
 
 int menu() {
     short input = 0;
-    cout << "Entropic Controller\n";
+    cout << "Entropic Controller developed by Michael Coffey\n";
     cout << "File Loaded: " << filename << "\n";
     cout << "Select an option:\n";
     cout << "0. Exit\n";
