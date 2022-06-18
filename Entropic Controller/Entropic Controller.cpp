@@ -40,6 +40,14 @@ vector<particle> inputparticles; //Vector of particles to inject at edges of the
 long long int boundary = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
+long long int calculatestrongforce(particle particle, short dimension) { //Calculate the strong force field for all particles
+    return 0;
+}
+
+long long int calculateemforce(particle particle, short dimension) { //Calculate the electromagnetic force field for all particles
+    return 0;
+}
+
 long long int totalmass(particle particle) { //Returns total mass of all particles except the selected particle
     unsigned long long int mass = 0;
     for (unsigned long long int i = 0; i < particles.size(); i++) {
@@ -47,14 +55,6 @@ long long int totalmass(particle particle) { //Returns total mass of all particl
     }
     mass -= particle.mass;
     return mass;
-} 
-
-long long int calculatestrongforce(particle particle, short dimension) { //Calculate the strong force field for all particles
-    return 0;
-}
-
-long long int calculateemforce(particle particle, short dimension) { //Calculate the electromagnetic force field for all particles
-    return 0;
 }
 
 long long int particlescom(particle particle, short dimension) {
@@ -67,19 +67,11 @@ long long int particlescom(particle particle, short dimension) {
 }
 
 long long int calculategravityforce(particle particle, short dimension) { //Calculate the gravity force field for all particles
-    unsigned long long int k = 6673; //G value of newton's universal law of gravitation to 10^-11
-    unsigned long long int m = particle.mass; //mass of current particle
-    unsigned long long int tm = totalmass(particle); //mass of all other particles
-    unsigned long long int d = particle.position[dimension] - particlescom(particle, dimension); //Distance from center of mass of other particles
-    return (k*m*tm)/(d^2);
-}
-
-long long int calculatehyperforce(particle particle, short dimension) { //Traditional force calculations will not operate with regards to the bounds of our percision - hyperforce is a compensating force for this
-    return 0;
+    //Welcome to HELL!
 }
 
 long long int calculateforce(particle particle, short dimension) { //Sum the forces calculated = strongforce + emforce + gravityforce + hyperforce(or comepensationforce)
-    return calculatestrongforce(particle, dimension) + calculateemforce(particle, dimension) + calculategravityforce(particle, dimension);
+    return calculategravityforce(particle, dimension);
 }
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
@@ -101,12 +93,13 @@ void setmass(particle particle) { //Sets the mass of the particle equal to its t
     }
     if (particle.type == 0) { //Neutron
         particle.mass = 167492749; //10^-27kg
-        particle.mass = particle.mass * 10 ^ 4; //10^31kg
+        particle.mass = particle.mass * 10 ^ 5; //10^-31kg
     }
     if (particle.type == 1) { //Proton
         particle.mass = 167262191; //10^-27kg
-        particle.mass = particle.mass * 10 ^ 4; //10^31kg
+        particle.mass = particle.mass * 10 ^ 5; //10^-31kg
     }
+    //The masses of the particles are now set to 10^-31kg in scale
 }
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
