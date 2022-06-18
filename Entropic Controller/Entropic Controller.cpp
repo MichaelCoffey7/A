@@ -91,6 +91,7 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         //Update acceleration for the particle based on force
         //THIS PART DOESN'T WORK YET!!!
+        //It's one very very very long equation... whoever derives it gets a cookie!
         /*
         particles[i].acceleration[0] = 
         particles[i].acceleration[1] =
