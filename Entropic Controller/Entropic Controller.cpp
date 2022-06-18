@@ -57,11 +57,20 @@ long long int calculateemforce(particle particle, short dimension) { //Calculate
     return 0;
 }
 
+long long int particlescom(particle particle, short dimension) {
+    long long int position = 0;
+    for (unsigned long long int i = 0; i < particles.size(); i++) {
+        position += particles[i].position[dimension];
+    }
+    position -= particle.position[dimension];
+    return position;
+}
+
 long long int calculategravityforce(particle particle, short dimension) { //Calculate the gravity force field for all particles
     unsigned long long int k; //G value of newton's universal law of gravitation
     unsigned long long int m = particle.mass; //mass of current particle
     unsigned long long int tm = totalmass(particle); //mass of all other particles
-    unsigned long long int d; //Distance from center of mass of other particles
+    unsigned long long int d = particle.position[dimension] - particlescom(particle, dimension); //Distance from center of mass of other particles
     return 0;
 }
 
