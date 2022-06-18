@@ -91,11 +91,23 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
         //Update acceleration for the particle based on force
         //THIS PART DOESN'T WORK YET!!!
         //It's one very very very long equation... whoever derives it gets a cookie!
-        /*
-        particles[i].acceleration[0] = 
-        particles[i].acceleration[1] =
-        particles[i].acceleration[2] = 
-        */
+        
+        //Load the registers with the values
+        unsigned long long int k1 = 0;
+        unsigned long long int q1 = 0;
+        unsigned long long int q2 = 0;
+        unsigned long long int k2 = 0;
+        unsigned long long int e1 = 0;
+        unsigned long long int e2 = 0;
+        unsigned long long int k3 = 0;
+        unsigned long long int g1 = 0;
+        unsigned long long int g2 = 0;
+        unsigned long long int r = 0;
+        unsigned long long int m = 0;
+        particles[i].acceleration[0] = ((k1 * q1 * q2) / (r ^ 2) + (k2 * e1 * e2) / (r ^ 2) + (k3 * g1 * g2) / (r ^ 2)) / m;
+        //particles[i].acceleration[1] =
+        //particles[i].acceleration[2] = 
+        
         //Update the kinematic values for the particle
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
