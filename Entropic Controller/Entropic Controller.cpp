@@ -44,7 +44,7 @@ long long int calculatestrongforce(particle particle) { //Calculate the strong f
     return 0;
 }
 
-long long int calculatemforce(particle particle) { //Calculate the electromagnetic force field for all particles
+long long int calculateemforce(particle particle) { //Calculate the electromagnetic force field for all particles
     return 0;
 }
 
@@ -57,7 +57,7 @@ long long int calculatehyperforce(particle particle) { //Traditional force calcu
 }
 
 long long int calculateforce(particle particle) { //Sum the forces calculated = strongforce + emforce + gravityforce + hyperforce(or comepensationforce)
-    return 0;
+    return calculatestrongforce(particle) + calculateemforce(particle) + calculategravityforce(particle);
 }
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
