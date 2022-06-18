@@ -5,7 +5,6 @@
 #include <vector>
 #include <string>
 #include <algorithm>
-#include <boost/cstdint.hpp>
 using namespace std;
 
 //1 entropic length = 0.2am (attometers)
