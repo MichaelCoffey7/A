@@ -89,7 +89,9 @@ void setmass(particle particle) { //Sets the mass of the particle equal to its t
 
 void kinematictick(particle particle) { //Process a kinematic tick for the particle
     //Update the acceleration based on the force
-    //particle.acceleration[0]
+    particle.acceleration[0] = calculateforce(particle) / particle.mass;
+    particle.acceleration[1] = calculateforce(particle) / particle.mass;
+    particle.acceleration[2] = calculateforce(particle) / particle.mass;
     //Update the velocity based on the acceleration
     particle.velocity[0] += particle.acceleration[0];
     particle.velocity[1] += particle.acceleration[1];
