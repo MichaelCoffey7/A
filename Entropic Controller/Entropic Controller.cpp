@@ -109,10 +109,17 @@ void setmass(particle particle) { //Sets the mass of the particle equal to its t
     }
 }
 
-void updatetick(vector<particle> particles) {  //Run one tick of the simulation for the vector of particles
+void updatetick() {  //Run one tick of the simulation for the vector of particles
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         //Update the kinematic values for the particle
-        particles[i].position[0] = particles[i].velocity[0];
+        particles[i].position[0] += particles[i].velocity[0];
+        particles[i].position[1] += particles[i].velocity[1];
+        particles[i].position[2] += particles[i].velocity[2];
+        particles[i].velocity[0] += particles[i].acceleration[0];
+        particles[i].velocity[1] += particles[i].acceleration[1];
+        particles[i].velocity[2] += particles[i].acceleration[2];
+        //Update acceleration for the particle based on force
+        
         //Sequentially checks all input particles if they are within the boundary and erases them if they are not
         if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
             particles.erase(particles.begin() + i);
@@ -450,7 +457,7 @@ void simulatetime() {
     cin >> ticks;
     for (unsigned long long int i = 1; i <= ticks; i++) {
         cout << "Processing tick: " << i << endl;
-        updatetick(particles);
+        updatetick();
     }
     cout << endl;
 }
