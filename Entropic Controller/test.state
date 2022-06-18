@@ -1,6 +1,16 @@
 Boundary: 7500000000000000000
 Particle 0:
    Neutron
-   Position: (0, 0, 0)
+   Position: (1000, 0, 0)
    Velocity: (1000, 0, 0)
+   Acceleration: (0, 0, 0)
+Particle 1:
+   Electron
+   Position: (0, 0, 0)
+   Velocity: (0, 0, 0)
+   Acceleration: (0, 0, 0)
+Particle 2:
+   Proton
+   Position: (0, 1, 100)
+   Velocity: (0, 0, 0)
    Acceleration: (0, 0, 0)
