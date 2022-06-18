@@ -5,6 +5,7 @@
 #include <vector>
 #include <string>
 #include <algorithm>
+#include <boost/cstdint.hpp>
 using namespace std;
 
 //1 entropic length = 0.2am (attometers)
@@ -68,10 +69,11 @@ long long int particlescom(particle particle, short dimension) {
 
 long long int calculategravityforce(particle particle, short dimension) { //Calculate the gravity force field for all particles
     //Welcome to HELL!
+    return 0;
 }
 
 long long int calculateforce(particle particle, short dimension) { //Sum the forces calculated = strongforce + emforce + gravityforce + hyperforce(or comepensationforce)
-    return calculategravityforce(particle, dimension);
+    return calculategravityforce(particle, dimension) + calculateemforce(particle, dimension) + calculatestrongforce(particle, dimension);
 }
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
