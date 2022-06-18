@@ -111,15 +111,18 @@ void setmass(particle particle) { //Sets the mass of the particle equal to its t
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
+        //Update acceleration for the particle based on force
+        //THIS PART DOESN'T WORK YET!!!
+        particles[i].acceleration[0] = calculateforce(particles[i], 0) / particles[i].mass;
+        particles[i].acceleration[1] = calculateforce(particles[i], 1) / particles[i].mass;
+        particles[i].acceleration[2] = calculateforce(particles[i], 2) / particles[i].mass;
         //Update the kinematic values for the particle
-        particles[i].position[0] += particles[i].velocity[0];
-        particles[i].position[1] += particles[i].velocity[1];
-        particles[i].position[2] += particles[i].velocity[2];
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
         particles[i].velocity[2] += particles[i].acceleration[2];
-        //Update acceleration for the particle based on force
-        
+        particles[i].position[0] += particles[i].velocity[0];
+        particles[i].position[1] += particles[i].velocity[1];
+        particles[i].position[2] += particles[i].velocity[2];
         //Sequentially checks all input particles if they are within the boundary and erases them if they are not
         if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
             particles.erase(particles.begin() + i);
