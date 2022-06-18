@@ -109,13 +109,13 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
         long long int e2 = sumcharges(); //the sum of all other particles
         unsigned long long int k3 = 6674; //E-11
         unsigned long long int k3f = 10 ^ 11; //Factor k3 by this number
-        unsigned long long int g1 = 0;
-        unsigned long long int g2 = 0;
+        unsigned long long int g1 = particles[i].mass;
+        unsigned long long int g2 = totalmass(particles[i]);
         unsigned long long int r = particlescom(particles[i], 1);
         unsigned long long int m = particles[i].mass;
         unsigned long long int mf1 = 10 ^ 16;
         unsigned long long int mf2 = 10 ^ 15;
-        particles[i].acceleration[0] = (((k1 * q1 * q2) / (r ^ 2)) + ((k2 * e1 * e2) / (r ^ 2)) + ((k3 * g1 * g2) / (k3f * (r ^ 2)))) / (m * mf1 * mf2);
+        particles[i].acceleration[0] = (((k1 * q1 * q2) / (r ^ 2)) + ((k2 * e1 * e2) / (r ^ 2)) + ((k3 * g1 * g2) / (k3f * (r ^ 2)))) / (m / ( mf1 + mf2 ));
         //particles[i].acceleration[1] =
         //particles[i].acceleration[2] = 
         
