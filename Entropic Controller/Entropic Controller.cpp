@@ -93,13 +93,13 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
         //It's one very very very long equation... whoever derives it gets a cookie!
         
         //Load the registers with the values
-        unsigned long long int k1 = 0;
+        unsigned long long int k1 = 24891*10^15; //E4
         unsigned long long int q1 = 1;
         unsigned long long int q2 = 1;
-        unsigned long long int k2 = 0;
+        unsigned long long int k2 = 8988*10^20; //E9
         long long int e1 = 0;
         long long int e2 = 0;
-        unsigned long long int k3 = 0;
+        unsigned long long int k3 = 6674; //E-11
         unsigned long long int g1 = 0;
         unsigned long long int g2 = 0;
         unsigned long long int r = 0;
