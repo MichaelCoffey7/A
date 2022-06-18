@@ -49,24 +49,28 @@ long long int totalmass(particle particle) { //Returns total mass of all particl
     return mass;
 } 
 
-long long int calculatestrongforce(particle particle) { //Calculate the strong force field for all particles
+long long int calculatestrongforce(particle particle, short dimension) { //Calculate the strong force field for all particles
     return 0;
 }
 
-long long int calculateemforce(particle particle) { //Calculate the electromagnetic force field for all particles
+long long int calculateemforce(particle particle, short dimension) { //Calculate the electromagnetic force field for all particles
     return 0;
 }
 
-long long int calculategravityforce(particle particle) { //Calculate the gravity force field for all particles
+long long int calculategravityforce(particle particle, short dimension) { //Calculate the gravity force field for all particles
+    unsigned long long int k; //G value of newton's universal law of gravitation
+    unsigned long long int m = particle.mass; //mass of current particle
+    unsigned long long int tm = totalmass(particle); //mass of all other particles
+    unsigned long long int d; //Distance from center of mass of other particles
     return 0;
 }
 
-long long int calculatehyperforce(particle particle) { //Traditional force calculations will not operate with regards to the bounds of our percision - hyperforce is a compensating force for this
+long long int calculatehyperforce(particle particle, short dimension) { //Traditional force calculations will not operate with regards to the bounds of our percision - hyperforce is a compensating force for this
     return 0;
 }
 
-long long int calculateforce(particle particle) { //Sum the forces calculated = strongforce + emforce + gravityforce + hyperforce(or comepensationforce)
-    return calculatestrongforce(particle) + calculateemforce(particle) + calculategravityforce(particle);
+long long int calculateforce(particle particle, short dimension) { //Sum the forces calculated = strongforce + emforce + gravityforce + hyperforce(or comepensationforce)
+    return calculatestrongforce(particle, dimension) + calculateemforce(particle, dimension) + calculategravityforce(particle, dimension);
 }
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
@@ -98,9 +102,9 @@ void setmass(particle particle) { //Sets the mass of the particle equal to its t
 
 void kinematictick(particle particle) { //Process a kinematic tick for the particle
     //Update the acceleration based on the force
-    particle.acceleration[0] = calculateforce(particle) / particle.mass;
-    particle.acceleration[1] = calculateforce(particle) / particle.mass;
-    particle.acceleration[2] = calculateforce(particle) / particle.mass;
+    particle.acceleration[0] = calculateforce(particle, 0) / particle.mass;
+    particle.acceleration[1] = calculateforce(particle, 1) / particle.mass;
+    particle.acceleration[2] = calculateforce(particle, 2) / particle.mass;
     //Update the velocity based on the acceleration
     particle.velocity[0] += particle.acceleration[0];
     particle.velocity[1] += particle.acceleration[1];
