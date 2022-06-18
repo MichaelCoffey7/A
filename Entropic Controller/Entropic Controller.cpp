@@ -67,11 +67,11 @@ long long int particlescom(particle particle, short dimension) {
 }
 
 long long int calculategravityforce(particle particle, short dimension) { //Calculate the gravity force field for all particles
-    unsigned long long int k; //G value of newton's universal law of gravitation
+    unsigned long long int k = 6673; //G value of newton's universal law of gravitation to 10^-11
     unsigned long long int m = particle.mass; //mass of current particle
     unsigned long long int tm = totalmass(particle); //mass of all other particles
     unsigned long long int d = particle.position[dimension] - particlescom(particle, dimension); //Distance from center of mass of other particles
-    return 0;
+    return (k*m*tm)/(d^2);
 }
 
 long long int calculatehyperforce(particle particle, short dimension) { //Traditional force calculations will not operate with regards to the bounds of our percision - hyperforce is a compensating force for this
@@ -122,8 +122,6 @@ void kinematictick(particle particle) { //Process a kinematic tick for the parti
     particle.position[0] += particle.velocity[0];
     particle.position[1] += particle.velocity[1];
     particle.position[2] += particle.velocity[2];
-
-    
 }
 
 void updatetick(vector<particle> particles) {  //Run one tick of the simulation for the vector of particles
@@ -462,7 +460,14 @@ void computesolution() {
 }
 
 void simulatetime() {
-
+    unsigned long long int ticks = 0;
+    cout << "For how many ticks: ";
+    cin >> ticks;
+    for (unsigned long long int i = 1; i <= ticks; i++) {
+        cout << "Processing tick: " << i << endl;
+        updatetick(particles);
+    }
+    cout << endl;
 }
 
 void readsolution() {
