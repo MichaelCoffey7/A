@@ -20,7 +20,7 @@ using namespace std;
 class particle {
 public:
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
-    long long int mass; //The mass of the particle
+    unsigned long long int mass; //The mass of the particle
     //Define the kinematic values for particles
     long long int position[3];
     long long int velocity[3];
@@ -39,6 +39,15 @@ vector<particle> inputparticles; //Vector of particles to inject at edges of the
 
 long long int boundary = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
+
+long long int totalmass(particle particle) { //Returns total mass of all particles except the selected particle
+    unsigned long long int mass = 0;
+    for (unsigned long long int i = 0; i < particles.size(); i++) {
+        mass += particles[i].mass;
+    }
+    mass -= particle.mass;
+    return mass;
+} 
 
 long long int calculatestrongforce(particle particle) { //Calculate the strong force field for all particles
     return 0;
