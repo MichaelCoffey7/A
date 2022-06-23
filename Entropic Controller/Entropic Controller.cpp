@@ -20,7 +20,6 @@ using namespace std;
 class particle {
 public:
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
-    unsigned long long int mass; //The mass of the particle
     //Define the kinematic values for particles
     long long int position[3];
     long long int velocity[3];
@@ -40,24 +39,6 @@ vector<particle> inputparticles; //Vector of particles to inject at edges of the
 long long int boundary = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
-long long int totalmass(particle particle) { //Returns total mass of all particles except the selected particle
-    unsigned long long int mass = 0;
-    for (unsigned long long int i = 0; i < particles.size(); i++) {
-        mass += particles[i].mass;
-    }
-    mass -= particle.mass;
-    return mass;
-}
-
-long long int particlescom(particle particle, short dimension) {
-    long long int position = 0;
-    for (unsigned long long int i = 0; i < particles.size(); i++) {
-        position += particles[i].position[dimension];
-    }
-    position -= particle.position[dimension];
-    return position;
-}
-
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
     if (abs(particle.position[0]) > boundary) {
         return false;
@@ -71,35 +52,18 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
     return true;
 }
 
-void setmass(particle particle) { //Sets the mass of the particle equal to its type
-    if (particle.type == -1) { //Electron
-        particle.mass = 9109383632; //10^-31kg
-    }
-    if (particle.type == 0) { //Neutron
-        particle.mass = 167492749; //10^-27kg
-        particle.mass = particle.mass * 10 ^ 5; //10^-31kg
-    }
-    if (particle.type == 1) { //Proton
-        particle.mass = 167262191; //10^-27kg
-        particle.mass = particle.mass * 10 ^ 5; //10^-31kg
-    }
-    //The masses of the particles are now set to 10^-31kg in scale
+//update acceleration based on newton's laws
+void updateacceleration() {
+
 }
 
-long long int sumcharges() {
-    long long int charges = 0;
-    for (unsigned long long int i = 0; i < particles.size(); i++) {
-        charges += particles[i].type;
-    }
-    return charges;
-}
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         //Update acceleration for the particle based on force
         //THIS PART DOESN'T WORK YET!!!
         //It's one very very very long equation... whoever derives it gets a cookie!
-        
+        updateacceleration();
         //Update the kinematic values for the particle
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
@@ -193,7 +157,6 @@ void addparticle() {
     particle.acceleration[0] = a[0];
     particle.acceleration[1] = a[1];
     particle.acceleration[2] = a[2];
-    setmass(particle);
     particles.push_back(particle);
     cout << endl;
 }
@@ -331,7 +294,6 @@ void loadfile() { //Load the first file
                     particle.acceleration[0] = a[0];
                     particle.acceleration[1] = a[1];
                     particle.acceleration[2] = a[2];
-                    setmass(particle);
                     particles.push_back(particle);
                     counter = 0;
                     break;
@@ -414,7 +376,6 @@ void loadfile2() { //Load the second file
                 particle.acceleration[0] = a[0];
                 particle.acceleration[1] = a[1];
                 particle.acceleration[2] = a[2];
-                setmass(particle);
                 particles2.push_back(particle);
                 counter = 0;
                 break;
