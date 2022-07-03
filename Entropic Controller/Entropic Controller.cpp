@@ -17,6 +17,9 @@ using namespace std;
 //Let's hope c++ is updated and moore's law works to increase the vector capcity to necessary amounts
 //Vector max size: 209622091746699450
 
+//This needs an acceleration calculator to make it work. Then I will be able to simulate universes using the simulate time function.
+//Later on, I can add a calculator to use compute solution to compute entropic solutions to state change problems.
+
 class particle {
 public:
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
