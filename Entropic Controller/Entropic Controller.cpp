@@ -388,7 +388,7 @@ void computesolution() {
     cout << "Enter name of solution file: ";
     cin >> solutionfile;
     solutionfile = solutionfile + ".solution";
-    //Computational code goes here
+    //Computational code goes here. Write the result to solutionfile.
     cout << endl;
 }
 
@@ -404,7 +404,9 @@ void simulatetime() {
 }
 
 void readsolution() {
-
+    cout << "Enter the solution file to read: ";
+	cin >> solutionfile;
+	//Parsing code goes here. Parse the file and print it on console.
 }
 
 int main()
