@@ -123,6 +123,7 @@ void addparticle() {
     cout << "-1. Electron\n";
     cout << "0. Neutron\n";
     cout << "1. Proton\n";
+    cout << "Selection: ";
     cin >> charge;
     cout << "Enter the x position: ";
     cin >> p[0];
@@ -409,7 +410,13 @@ void simulatetime() {
 void readsolution() {
     cout << "Enter the solution file to read: ";
 	cin >> solutionfile;
-	//Parsing code goes here. Parse the file and print it on console.
+    solutionfile = solutionfile + ".solution";
+    ifstream file(solutionfile);
+    string line;
+    while (getline(file, line)) {
+        cout << line << endl;
+    }
+    cout << endl;
 }
 
 int main()
