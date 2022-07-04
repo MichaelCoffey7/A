@@ -89,7 +89,6 @@ int menu() {
     cout << "11. Read a solution file\n";
     cout << "Selection: ";
     cin >> input;
-    cout << endl;
     return input;
 }
 
@@ -415,6 +414,11 @@ void readsolution() {
     cout << endl;
 }
 
+void unavailablefeature() {
+	cout << "This feature is not available" << endl;
+    cout << endl;
+}
+
 int main()
 {
     short input = 100;
@@ -448,10 +452,12 @@ int main()
             simulatetime();
         }
         if (input == 10) {
-            computesolution();
+            unavailablefeature();
+            //computesolution();
         }
         if (input == 11) {
-            readsolution();
+            unavailablefeature();
+            //readsolution();
         }
     }
 }
