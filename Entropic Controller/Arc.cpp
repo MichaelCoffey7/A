@@ -414,11 +414,6 @@ void readsolution() {
     cout << endl;
 }
 
-void unavailablefeature() {
-	cout << "This feature is not available" << endl;
-    cout << endl;
-}
-
 int main() {
     short input = 100;
     while (input != 0) {
