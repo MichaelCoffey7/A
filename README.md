@@ -15,7 +15,3 @@ Maximum Simulation Volume: 3 meters x 3 meters x 3 meters
 Maximum Simulation Time: 30 seconds
 
 Particle Limit: 209622091746699450
-
-Developers:
-
-Michael Coffey
