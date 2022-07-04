@@ -17,7 +17,7 @@ using namespace std;
 
 //TO DO:
 //Implement simulate time
-//Imeplement generate solution
+//Implement generate solution
 
 class particle {
 public:
