@@ -1,12 +1,8 @@
-Omega developed by STEM Series Scientific Manuals
+Arc developed by Arctura
 
-<->
+Version: 1.0
 
-Description:
-
-Omega is particle physics simulation software.
-
-<->
+Description: A program to simulate the motion of particles in a 3D space
 
 Technical Specifications:
 
@@ -20,8 +16,6 @@ Maximum Simulation Time: 30 seconds
 
 Particle Limit: 209622091746699450
 
-<->
-
-Programmers:
+Developers:
 
 Michael Coffey
