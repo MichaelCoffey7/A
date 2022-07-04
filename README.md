@@ -1,4 +1,4 @@
-A developed by Arc
+A by Arc
 
 Version: 1.0
 
