@@ -56,8 +56,7 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
 void updatetick() {  //Run one tick of the simulation for the vector of particles
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         //Update acceleration for the particle based on force
-        //THIS PART DOESN'T WORK YET!!!
-        //It's one very very very long equation... whoever derives it gets a cookie!
+        //TO DO: Add acceleration calculator
         //Update the kinematic values for the particle
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
