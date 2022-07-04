@@ -73,7 +73,7 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
 int menu() {
     short input = 0;
     const char* a = u8"\u01633";
-    cout << "A developed by Arc\n";
+    cout << "A by Arc\n";
     cout << "File Loaded: " << filename << "\n";
     cout << "Select an option:\n";
     cout << "0. Exit\n";
@@ -417,7 +417,7 @@ void readsolution() {
 }
 
 void about() {
-    cout << "A developed by Arc" << endl;
+    cout << "A by Arc" << endl;
 	cout << "Version: 1.0" << endl;
 	cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
     cout << "Technical Specifications:" << endl;
