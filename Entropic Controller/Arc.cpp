@@ -87,6 +87,7 @@ int menu() {
     cout << "9. Simulate time\n";
     cout << "10. Compute a solution\n";
     cout << "11. Read a solution file\n";
+    cout << "12. About\n";
     cout << "Selection: ";
     cin >> input;
     return input;
@@ -414,6 +415,21 @@ void readsolution() {
     cout << endl;
 }
 
+void about() {
+    cout << "Arc developed by Arctura" << endl;
+	cout << "Version: 1.0" << endl;
+	cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
+    cout << "Technical Specifications:" << endl;
+    cout << "Space Percision: 0.2 attometers" << endl;
+    cout << "Time Percision: 2 attoseconds" << endl;
+    cout << "Maximum Simulation Volume: 3 meters x 3 meters x 3 meters" << endl;
+    cout << "Maximum Simulation Time: 30 seconds" << endl;
+    cout << "Particle Limit: 209622091746699450" << endl;
+    cout << "Developers:" << endl;
+	cout << "Michael Coffey" << endl;
+    cout << endl;
+}
+
 int main() {
     short input = 100;
     while (input != 0) {
@@ -450,6 +466,9 @@ int main() {
         }
         if (input == 11) {
             readsolution();
+        }
+        if (input == 12) {
+            about();
         }
     }
 }
