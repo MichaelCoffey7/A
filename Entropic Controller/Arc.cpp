@@ -72,7 +72,7 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
 
 int menu() {
     short input = 0;
-    cout << "Omega developed by STEM Series Scientific Manuals\n";
+    cout << "Arc developed by STEM Series Scientific Manuals\n";
     cout << "File Loaded: " << filename << "\n";
     cout << "Select an option:\n";
     cout << "0. Exit\n";
