@@ -1,4 +1,4 @@
-// Arc.cpp : This file contains the 'main' function. Program execution begins and ends there.
+﻿// Arc.cpp : This file contains the 'main' function. Program execution begins and ends there.
 
 #include <iostream>
 #include <fstream>
@@ -72,7 +72,7 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
 
 int menu() {
     short input = 0;
-    cout << "Arc developed by Arctura\n";
+    cout << "Λ developed by Arc\n";
     cout << "File Loaded: " << filename << "\n";
     cout << "Select an option:\n";
     cout << "0. Exit\n";
