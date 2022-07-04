@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Omega.cpp">
+    <ClCompile Include="Arc.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
