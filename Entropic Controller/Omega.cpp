@@ -419,8 +419,7 @@ void unavailablefeature() {
     cout << endl;
 }
 
-int main()
-{
+int main() {
     short input = 100;
     while (input != 0) {
         input = menu();
