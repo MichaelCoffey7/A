@@ -425,8 +425,6 @@ void about() {
     cout << "Maximum Simulation Volume: 3 meters x 3 meters x 3 meters" << endl;
     cout << "Maximum Simulation Time: 30 seconds" << endl;
     cout << "Particle Limit: 209622091746699450" << endl;
-    cout << "Developers:" << endl;
-	cout << "Michael Coffey" << endl;
     cout << endl;
 }
 
