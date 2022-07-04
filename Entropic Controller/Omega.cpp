@@ -452,12 +452,10 @@ int main()
             simulatetime();
         }
         if (input == 10) {
-            unavailablefeature();
-            //computesolution();
+            computesolution();
         }
         if (input == 11) {
-            unavailablefeature();
-            //readsolution();
+            readsolution();
         }
     }
 }
