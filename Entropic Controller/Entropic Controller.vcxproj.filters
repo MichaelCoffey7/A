@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Entropic Controller.cpp">
+    <ClCompile Include="Omega.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
