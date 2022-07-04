@@ -1,17 +1,14 @@
-Entropic Controller
+Omega developed by STEM Series Scientific Manuals
 
-An Entropic Controller consists of three parts:
+Description:
+Omega is particle physics simulation software.
 
-1) A scanner to identify the particles within the Entropic Controller's cube of control
-2) A computer to calculate injection vectors of particles to force the particles within the Entropic Controller's cube to a certain state
-3) An injector to inject the particles to allow a transition from the scanned state to another defined state as calculated by the computer
+Technical Specifications:
+Space Percision: 0.2 attometers
+Time Percision: 2 attoseconds
+Maximum Simulation Volume: 3 meters x 3 meters x 3 meters
+Maximum Simulation Time: 30 seconds
+Particle Limit: 209622091746699450
 
-This is software representing the computer component of the Entropic Controller.
-
-This software is under development.
-
-Read more about the Entropic Controller at:
-https://medium.com/@michaelcoffey_16757/the-entropic-controller-29cbe0d577ab
-
-Purchase my book Eternal Youth to read how an Entropic Controller can allow for human life extention here:
-https://www.amazon.com/Eternal-Youth-Michael-Coffey/dp/B0B2HN9NKD/
+Programmers:
+Michael Coffey
