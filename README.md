@@ -1,4 +1,4 @@
-Arc developed by Arctura
+A developed by Arc
 
 Version: 1.0
 
