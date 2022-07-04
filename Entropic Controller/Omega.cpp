@@ -448,16 +448,13 @@ int main() {
             removeparticle();
         }
         if (input == 9) {
-            unavailablefeature();
-            //simulatetime();
+            simulatetime();
         }
         if (input == 10) {
-            unavailablefeature();
-            //computesolution();
+            computesolution();
         }
         if (input == 11) {
-            unavailablefeature();
-            //readsolution();
+            readsolution();
         }
     }
 }
