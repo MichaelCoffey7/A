@@ -1,4 +1,4 @@
-A by Arc
+A by arc
 
 Version: 1.0
 
