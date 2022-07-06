@@ -72,7 +72,6 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
 
 int menu() {
     short input = 0;
-    const char* a = u8"\u01633";
     cout << "A by arc\n";
     cout << "File Loaded: " << filename << "\n";
     cout << "Select an option:\n";
