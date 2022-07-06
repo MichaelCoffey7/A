@@ -202,6 +202,7 @@ void savefile() {
         file << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
     }
     file.close();
+    cout << endl;
 }
 
 void setboundary() {
