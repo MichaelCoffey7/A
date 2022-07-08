@@ -61,8 +61,8 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         //Update acceleration for the particle based on force
         particles[i].acceleration[0] = calculateacceleration(particles[i], 0);
-        particles[i].acceleration[0] = calculateacceleration(particles[i], 1);
-        particles[i].acceleration[0] = calculateacceleration(particles[i], 2);
+        particles[i].acceleration[1] = calculateacceleration(particles[i], 1);
+        particles[i].acceleration[2] = calculateacceleration(particles[i], 2);
         //Update the kinematic values for the particle
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
