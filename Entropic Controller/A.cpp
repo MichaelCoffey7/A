@@ -54,7 +54,7 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
 
 //Calculate acceleration by dividing force, which is equal to strong force (calculated from Kq1q2/r^2) plus electromagnetic force (calculated from Kq1q2/r^2 plus gravity force (calculated from Kq1q2/r^2, by mass of the particle as dictated by particle type
 int calculateacceleration(particle particle, short dimension) {
-    return 0;
+    return particle.acceleration[dimension];
 }
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
