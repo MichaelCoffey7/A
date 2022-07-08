@@ -54,6 +54,27 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
 
 //Calculate acceleration by dividing force, which is equal to strong force (calculated from Kq1q2/r^2) plus electromagnetic force (calculated from Kq1q2/r^2 plus gravity force (calculated from Kq1q2/r^2, by mass of the particle as dictated by particle type
 int calculateacceleration(particle particle, short dimension) {
+    //If it's the only particle in the system, we return its current acceleration
+    if (particles.size() == 1) {
+		return particle.acceleration[dimension];
+	}
+    //Otherwise, we calculate the multibody interaction of all other particles in the system on this particle
+	//Set the particle mass according to its type
+    //Set particle charge according to its type
+    unsigned long long int mass; //Mass is unsigned
+	long long int charge; //Charge is signed
+    if (particle.type == -1) { //Electron
+        mass = 0;
+        charge = 0;
+    }
+    if (particle.type == 0) { //Neutron
+        mass = 1;
+        charge = 0;
+    }
+    if (particle.type == 1) { //Proton
+        mass = 1;
+        charge = 0;
+    }
     return particle.acceleration[dimension];
 }
 
