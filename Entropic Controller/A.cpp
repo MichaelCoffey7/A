@@ -68,11 +68,11 @@ int calculateacceleration(particle particle, short dimension) {
         charge = 0;
     }
     if (particle.type == 0) { //Neutron
-        mass = 1;
+        mass = 0;
         charge = 0;
     }
     if (particle.type == 1) { //Proton
-        mass = 1;
+        mass = 0;
         charge = 0;
     }
     return particle.acceleration[dimension];
