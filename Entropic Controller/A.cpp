@@ -54,7 +54,7 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
 }
 
 //Calculate acceleration by dividing force, which is equal to strong force (calculated from Kq1q2/r^2) plus electromagnetic force (calculated from Kq1q2/r^2 plus gravity force (calculated from Kq1q2/r^2, by mass of the particle as dictated by particle type
-int calculateacceleration(particle particle, short dimension) {
+long long int calculateacceleration(particle particle, short dimension) {
     //If it's the only particle in the system, we return its current acceleration
     if (particles.size() == 1) {
 		return particle.acceleration[dimension];
@@ -64,9 +64,12 @@ int calculateacceleration(particle particle, short dimension) {
 	//Set the particle mass according to the particle type
     //Set particle charge according to the particle type
 	//Set the strong force constant according to the particle type
-    unsigned long long int mass; //Mass is unsigned
-	long long int charge; //Charge is signed
-	long long int strong; //Strong force is signed
+    unsigned long long int mass = 0; //Mass is unsigned
+	long long int charge = 0; //Charge is signed
+	long long int strong = 0; //Strong force is signed
+    unsigned long long int mass2 = 0; //Mass is unsigned
+    long long int charge2 = 0; //Charge is signed
+    long long int strong2 = 0; //Strong force is signed
     if (particle.type == -1) { //Electron
         mass = 0;
         charge = 0;
@@ -83,7 +86,9 @@ int calculateacceleration(particle particle, short dimension) {
         strong = 0;
     }
     //Set the K values for the calculations
-	
+    unsigned long long int kgravity = 0;
+    unsigned long long int kem = 0;
+    unsigned long long int kstrong = 0;
 	//Calculate the force on this particle by summing the force on all other particles in the system
 	long long int force = 0; //Force is signed
 	//Loop through all particles in the system
@@ -91,7 +96,26 @@ int calculateacceleration(particle particle, short dimension) {
         if (i != particle.number) { //If the particle is the same as the input particle, we skip it
             //Calculate the distance between the two particles
             distance = abs(particle.position[dimension] - particles[i].position[dimension]);
+			//Assign the constant values depending on particle type
+            if (particles[i].type == -1) { //Electron
+                mass2 = 0;
+                charge2 = 0;
+                strong2 = 0;
+            }
+            if (particles[i].type == 0) { //Neutron
+                mass2 = 0;
+                charge2 = 0;
+                strong2 = 0;
+            }
+            if (particles[i].type == 1) { //Proton
+                mass2 = 0;
+                charge2 = 0;
+                strong2 = 0;
+            }
             //Perform the calculation of force by adding it to the force variable
+			force += (charge * charge2) / (distance * distance);
+			force += (strong * strong2) / (distance * distance);
+			force += (mass * mass2) / (distance * distance);
         }
     }
     //Convert force to acceleration by dividing by mass and return the acceleration
