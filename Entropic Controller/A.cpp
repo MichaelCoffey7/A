@@ -149,7 +149,7 @@ int menu() {
     cout << "File Loaded: " << filename << "\n";
     cout << "Select an option:\n";
     cout << "0. Exit\n";
-    cout << "1. Create a new file\n";
+    cout << "1. About\n";
     cout << "2. Select a file\n";
     cout << "3. Save to file\n";
     cout << "4. Load from file\n";
@@ -160,20 +160,9 @@ int menu() {
     cout << "9. Simulate time\n";
     cout << "10. Compute a solution\n";
     cout << "11. Read a solution file\n";
-    cout << "12. About\n";
     cout << "Selection: ";
     cin >> input;
     return input;
-}
-
-void createfile() {
-    cout << "Enter a file name: ";
-    cin >> filename;
-    filename = filename + ".state";
-    cout << endl;
-    ofstream file;
-    file.open(filename);
-    file.close();
 }
 
 void selectfile() {
@@ -509,7 +498,7 @@ int main() {
     while (input != 0) {
         input = menu();
         if (input == 1) {
-            createfile();
+            about();
         }
         if (input == 2) {
             selectfile();
@@ -540,9 +529,6 @@ int main() {
         }
         if (input == 11) {
             readsolution();
-        }
-        if (input == 12) {
-            about();
         }
     }
 }
