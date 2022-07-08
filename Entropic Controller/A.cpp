@@ -113,9 +113,9 @@ long long int calculateacceleration(particle particle, short dimension) {
                 strong2 = 0;
             }
             //Perform the calculation of force by adding it to the force variable
-			force += (charge * charge2) / (distance * distance);
-			force += (strong * strong2) / (distance * distance);
-			force += (mass * mass2) / (distance * distance);
+			force += (kem * charge * charge2) / (distance * distance);
+			force += (kstrong * strong * strong2) / (distance * distance);
+			force += (kgravity * mass * mass2) / (distance * distance);
         }
     }
     //Convert force to acceleration by dividing by mass and return the acceleration
