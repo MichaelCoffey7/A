@@ -119,7 +119,8 @@ long long int calculateacceleration(particle particle, short dimension) {
         }
     }
     //Convert force to acceleration by dividing by mass and return the acceleration
-    return particle.acceleration[dimension];
+	//Ensure units of acceleration are in 0.1m/s^2
+	return force / mass;
 }
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
