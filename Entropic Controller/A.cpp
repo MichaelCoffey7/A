@@ -27,6 +27,7 @@ public:
     long long int velocity[3];
     long long int acceleration[3];
     unsigned long long int injectiontime; //For input particles, the time the particle appears at the edge of the cube
+    unsigned long long int number; //The particle number
 };
 
 string filename = "File not loaded";
@@ -59,22 +60,41 @@ int calculateacceleration(particle particle, short dimension) {
 		return particle.acceleration[dimension];
 	}
     //Otherwise, we calculate the multibody interaction of all other particles in the system on this particle
-	//Set the particle mass according to its type
-    //Set particle charge according to its type
+    unsigned long long int distance; //Distance is unsigned
+	//Set the particle mass according to the particle type
+    //Set particle charge according to the particle type
+	//Set the strong force constant according to the particle type
     unsigned long long int mass; //Mass is unsigned
 	long long int charge; //Charge is signed
+	long long int strong; //Strong force is signed
     if (particle.type == -1) { //Electron
         mass = 0;
         charge = 0;
+        strong = 0;
     }
     if (particle.type == 0) { //Neutron
         mass = 0;
         charge = 0;
+        strong = 0;
     }
     if (particle.type == 1) { //Proton
         mass = 0;
         charge = 0;
+        strong = 0;
     }
+    //Set the K values for the calculations
+	
+	//Calculate the force on this particle by summing the force on all other particles in the system
+	long long int force = 0; //Force is signed
+	//Loop through all particles in the system
+    for (int i = 0; i < particles.size(); i++) {
+        if (i != particle.number) { //If the particle is the same as the input particle, we skip it
+            //Calculate the distance between the two particles
+            distance = abs(particle.position[dimension] - particles[i].position[dimension]);
+            //Perform the calculation of force by adding it to the force variable
+        }
+    }
+    //Convert force to acceleration by dividing by mass and return the acceleration
     return particle.acceleration[dimension];
 }
 
@@ -178,6 +198,7 @@ void addparticle() {
     particle.acceleration[0] = a[0];
     particle.acceleration[1] = a[1];
     particle.acceleration[2] = a[2];
+	particle.number = particles.size();
     particles.push_back(particle);
     cout << endl;
 }
@@ -316,6 +337,7 @@ void loadfile() { //Load the first file
                     particle.acceleration[0] = a[0];
                     particle.acceleration[1] = a[1];
                     particle.acceleration[2] = a[2];
+                    particle.number = particles.size();
                     particles.push_back(particle);
                     counter = 0;
                     break;
