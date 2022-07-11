@@ -71,24 +71,24 @@ long long int calculateacceleration(particle particle, short dimension) {
     double charge2 = 0;
     double strong2 = 0;
     if (particle.type == -1) { //Electron
-        mass = 0;
-        charge = 0;
-        strong = 0;
+        mass = 9.109383632E-31;
+        charge = -1;
+        strong = 1;
     }
     if (particle.type == 0) { //Neutron
-        mass = 0;
+        mass = 1.674927485E-27;
         charge = 0;
-        strong = 0;
+        strong = 1;
     }
     if (particle.type == 1) { //Proton
-        mass = 0;
-        charge = 0;
-        strong = 0;
+        mass = 1.672621911E-27;
+        charge = 1;
+        strong = 1;
     }
     //Set the K values for the calculations
-    double kgravity = 0;
-    double kem = 0;
-    double kstrong = 0;
+    double kgravity = 6.674E-11;
+    double kem = 8.98755179E9;
+    double kstrong = 3.16148E-26;
 	//Calculate the force on this particle by summing the force on all other particles in the system
     double force = 0;
 	//Loop through all particles in the system
@@ -97,20 +97,20 @@ long long int calculateacceleration(particle particle, short dimension) {
             //Calculate the distance between the two particles
             distance = 2E-19 * abs(particle.position[dimension] - particles[i].position[dimension]); //Multiply the calculated unit distance by 0.2 attometers
 			//Assign the constant values depending on particle type
-            if (particles[i].type == -1) { //Electron
-                mass2 = 0;
-                charge2 = 0;
-                strong2 = 0;
+            if (particle.type == -1) { //Electron
+                mass = 9.109383632E-31;
+                charge = -1;
+                strong = 1;
             }
-            if (particles[i].type == 0) { //Neutron
-                mass2 = 0;
-                charge2 = 0;
-                strong2 = 0;
+            if (particle.type == 0) { //Neutron
+                mass = 1.674927485E-27;
+                charge = 0;
+                strong = 1;
             }
-            if (particles[i].type == 1) { //Proton
-                mass2 = 0;
-                charge2 = 0;
-                strong2 = 0;
+            if (particle.type == 1) { //Proton
+                mass = 1.672621911E-27;
+                charge = 1;
+                strong = 1;
             }
             //Perform the calculation of force by adding it to the force variable
 			force += (kem * charge * charge2) / (distance * distance);
@@ -118,8 +118,7 @@ long long int calculateacceleration(particle particle, short dimension) {
 			force += (kgravity * mass * mass2) / (distance * distance);
         }
     }
-    //Convert force to acceleration by dividing by mass and return the acceleration
-	//Ensure units of acceleration are in 0.1m/s^2
+    //Convert force to acceleration by dividing by mass and return the acceleration. The acceleration is in units of 0.2attometers/0.2attoseconds^2 or 1m/s^2
 	return force / mass;
 }
 
