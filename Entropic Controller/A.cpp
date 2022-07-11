@@ -208,7 +208,7 @@ void addparticle() {
     particle.acceleration[0] = a[0];
     particle.acceleration[1] = a[1];
     particle.acceleration[2] = a[2];
-	particle.number = particles.size();
+    particle.number = particles.size();
     particles.push_back(particle);
     cout << endl;
 }
