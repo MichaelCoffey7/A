@@ -88,14 +88,14 @@ long long int calculateacceleration(particle particle, short dimension) {
     //Set the K values for the calculations
     double kgravity = 6.674E-11;
     double kem = 8.98755179E9;
-	//Calculate the force on this particle by summing the force on all other particles in the system
+    //Calculate the force on this particle by summing the force on all other particles in the system
     double force = 0;
-	//Loop through all particles in the system
+    //Loop through all particles in the system
     for (unsigned long long int i = 0; i < particles.size(); i++) {
         if (i != particle.number) { //If the particle is the same as the input particle, we skip it
             //Calculate the distance between the two particles
             distance = 2E-19 * abs(particle.position[dimension] - particles[i].position[dimension]); //Multiply the calculated unit distance by 0.2 attometers
-			//Assign the constant values depending on particle type
+            //Assign the constant values depending on particle type
             if (particles[i].type == -1) { //Electron
                 mass2 = 9.109383632E-31;
                 charge2 = -1;
