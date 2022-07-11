@@ -66,7 +66,7 @@ long long int calculateacceleration(particle particle, short dimension) {
 	}
     //Otherwise, we calculate the multibody interaction of all other particles in the system on this particle
     double distance;
-	//Set the particle mass according to the particle type
+    //Set the particle mass according to the particle type
     //Set particle charge according to the particle type
     //Set the strong force constant according to the particle type
     double mass = 0;
