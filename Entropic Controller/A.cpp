@@ -49,6 +49,15 @@ bool withinbound(particle particle) { //Checks if the input particle is within t
     }
 }
 
+void validateboundary() {
+    //Sequentially checks all input particles if they are within the boundary and erases them if they are not
+    for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
+        if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
+            particles.erase(particles.begin() + i);
+        }
+    }
+}
+
 //Calculate acceleration by dividing force, which is equal to strong force (calculated from Kq1q2/r^2) plus electromagnetic force (calculated from Kq1q2/r^2 plus gravity force (calculated from Kq1q2/r^2, by mass of the particle as dictated by particle type
 long long int calculateacceleration(particle particle, short dimension) {
     //If it's the only particle in the system, we return its current acceleration
@@ -119,25 +128,24 @@ long long int calculateacceleration(particle particle, short dimension) {
 }
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
+    //Update acceleration for the particle based on force
     for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
-        //Update acceleration for the particle based on force
         particles[i].acceleration[0] = calculateacceleration(particles[i], 0);
         particles[i].acceleration[1] = calculateacceleration(particles[i], 1);
         particles[i].acceleration[2] = calculateacceleration(particles[i], 2);
-        //Update the kinematic values for the particle
+    }
+    //Update the kinematic values for the particle
+    for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         particles[i].velocity[0] += particles[i].acceleration[0];
         particles[i].velocity[1] += particles[i].acceleration[1];
         particles[i].velocity[2] += particles[i].acceleration[2];
+    }
+    for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         particles[i].position[0] += particles[i].velocity[0];
         particles[i].position[1] += particles[i].velocity[1];
         particles[i].position[2] += particles[i].velocity[2];
     }
-    //Sequentially checks all input particles if they are within the boundary and erases them if they are not
-    for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
-        if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
-            particles.erase(particles.begin() + i);
-        }
-    }
+    validateboundary();
 }
 
 int menu() {
