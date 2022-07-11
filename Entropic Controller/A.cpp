@@ -95,7 +95,7 @@ long long int calculateacceleration(particle particle, short dimension) {
     for (int i = 0; i < particles.size(); i++) {
         if (i != particle.number) { //If the particle is the same as the input particle, we skip it
             //Calculate the distance between the two particles
-            distance = abs(particle.position[dimension] - particles[i].position[dimension]);
+            distance = 2E-19 * abs(particle.position[dimension] - particles[i].position[dimension]); //Multiply the calculated unit distance by 0.2 attometers
 			//Assign the constant values depending on particle type
             if (particles[i].type == -1) { //Electron
                 mass2 = 0;
