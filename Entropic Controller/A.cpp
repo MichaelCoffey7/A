@@ -41,7 +41,7 @@ long long int boundary = 7500000000000000000; //The side length of the entropic 
 long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
-    if (abs(particle.position[0]) > boundary or abs(particle.position[1]) > boundary or abs(particle.position[2]) > boundary) {
+    if (abs(particle.position[0]) > boundary or abs(particle.position[1]) > boundary or abs(particle.position[2]) > boundary or particle.position[0] == LLONG_MIN or particle.position[1] == LLONG_MIN or particle.position[2] == LLONG_MIN) {
         return false;
     }
     else {
@@ -71,29 +71,23 @@ long long int calculateacceleration(particle particle, short dimension) {
 	//Set the strong force constant according to the particle type
     double mass = 0;
 	double charge = 0;
-	double strong = 0;
     double mass2 = 0;
     double charge2 = 0;
-    double strong2 = 0;
     if (particle.type == -1) { //Electron
         mass = 9.109383632E-31;
         charge = -1;
-        strong = 0;
     }
     if (particle.type == 0) { //Neutron
         mass = 1.674927485E-27;
         charge = 0;
-        strong = 1;
     }
     if (particle.type == 1) { //Proton
         mass = 1.672621911E-27;
         charge = 1;
-        strong = 1;
     }
     //Set the K values for the calculations
     double kgravity = 6.674E-11;
     double kem = 8.98755179E9;
-    double kstrong = 3.16148E-26;
 	//Calculate the force on this particle by summing the force on all other particles in the system
     double force = 0;
 	//Loop through all particles in the system
@@ -105,21 +99,17 @@ long long int calculateacceleration(particle particle, short dimension) {
             if (particles[i].type == -1) { //Electron
                 mass2 = 9.109383632E-31;
                 charge2 = -1;
-                strong2 = 1;
             }
             if (particles[i].type == 0) { //Neutron
                 mass2 = 1.674927485E-27;
                 charge2 = 0;
-                strong2 = 1;
             }
             if (particles[i].type == 1) { //Proton
                 mass2 = 1.672621911E-27;
                 charge2 = 1;
-                strong2 = 1;
             }
             //Perform the calculation of force by adding it to the force variable
 			force += (kem * charge * charge2) / (distance * distance);
-			force += (kstrong * strong * strong2) / (distance * distance);
 			force += (kgravity * mass * mass2) / (distance * distance);
         }
     }
@@ -149,6 +139,7 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
 }
 
 int menu() {
+    validateboundary();
     short input = 0;
     cout << "A by arc\n";
     cout << "File Loaded: " << filename << "\n";
@@ -491,9 +482,9 @@ void about() {
 	cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
     cout << "Technical Specifications:" << endl;
     cout << "Space Percision: 0.2 attometers" << endl;
-    cout << "Time Percision: 2 attoseconds" << endl;
+    cout << "Time Percision: 0.2 attoseconds" << endl;
     cout << "Maximum Simulation Volume: 3 meters x 3 meters x 3 meters" << endl;
-    cout << "Maximum Simulation Time: 30 seconds" << endl;
+    cout << "Maximum Simulation Time: 3 seconds" << endl;
     cout << "Particle Limit: 209622091746699450" << endl;
     cout << endl;
 }
