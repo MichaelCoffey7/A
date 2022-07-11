@@ -479,7 +479,7 @@ void readsolution() {
 void about() {
     cout << "A by arc" << endl;
     cout << "Version: 1.0" << endl;
-	cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
+    cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
     cout << "Technical Specifications:" << endl;
     cout << "Space Percision: 0.2 attometers" << endl;
     cout << "Time Percision: 0.2 attoseconds" << endl;
