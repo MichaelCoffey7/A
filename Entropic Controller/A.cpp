@@ -123,8 +123,8 @@ long long int calculateacceleration(particle particle, short dimension) {
 			force += (kgravity * mass * mass2) / (distance * distance);
         }
     }
-    //Convert force to acceleration by dividing by mass and return the acceleration. The acceleration is in units of 0.2attometers/0.2attoseconds^2 or 1m/s^2
-	return force / mass;
+    //Convert force to acceleration by dividing by mass and return the acceleration.
+	return (force / mass);
 }
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
