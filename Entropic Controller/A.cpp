@@ -94,19 +94,19 @@ long long int calculateacceleration(particle particle, short dimension) {
             distance = 2E-19 * abs(particle.position[dimension] - particles[i].position[dimension]); //Multiply the calculated unit distance by 0.2 attometers
 			//Assign the constant values depending on particle type
             if (particle.type == -1) { //Electron
-                mass = 9.109383632E-31;
-                charge = -1;
-                strong = 1;
+                mass2 = 9.109383632E-31;
+                charge2 = -1;
+                strong2 = 1;
             }
             if (particle.type == 0) { //Neutron
-                mass = 1.674927485E-27;
-                charge = 0;
-                strong = 1;
+                mass2 = 1.674927485E-27;
+                charge2 = 0;
+                strong2 = 1;
             }
             if (particle.type == 1) { //Proton
-                mass = 1.672621911E-27;
-                charge = 1;
-                strong = 1;
+                mass2 = 1.672621911E-27;
+                charge2 = 1;
+                strong2 = 1;
             }
             //Perform the calculation of force by adding it to the force variable
 			force += (kem * charge * charge2) / (distance * distance);
