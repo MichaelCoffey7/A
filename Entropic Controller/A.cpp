@@ -41,16 +41,12 @@ long long int boundary = 7500000000000000000; //The side length of the entropic 
 long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
-    if (abs(particle.position[0]) > boundary) {
+    if (abs(particle.position[0]) > boundary or abs(particle.position[1]) > boundary or abs(particle.position[2]) > boundary) {
         return false;
     }
-    if (abs(particle.position[1]) > boundary) {
-        return false;
+    else {
+        return true;
     }
-    if (abs(particle.position[2]) > boundary) {
-        return false;
-    }
-    return true;
 }
 
 //Calculate acceleration by dividing force, which is equal to strong force (calculated from Kq1q2/r^2) plus electromagnetic force (calculated from Kq1q2/r^2 plus gravity force (calculated from Kq1q2/r^2, by mass of the particle as dictated by particle type
