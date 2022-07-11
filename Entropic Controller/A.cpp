@@ -131,7 +131,9 @@ void updatetick() {  //Run one tick of the simulation for the vector of particle
         particles[i].position[0] += particles[i].velocity[0];
         particles[i].position[1] += particles[i].velocity[1];
         particles[i].position[2] += particles[i].velocity[2];
-        //Sequentially checks all input particles if they are within the boundary and erases them if they are not
+    }
+    //Sequentially checks all input particles if they are within the boundary and erases them if they are not
+    for (unsigned long long int i = 0; i < particles.size(); i++) { //Loop through all particles
         if (!withinbound(particles[i])) { //If the particle is not within the boundary, erase it
             particles.erase(particles.begin() + i);
         }
