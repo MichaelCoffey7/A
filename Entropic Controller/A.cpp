@@ -9,10 +9,10 @@ using namespace std;
 
 //1 entropic length = 0.2am (attometers)
 //The entropic controller can control entropy within a 3 meter by 3 meter cube
-//1 entropic tick = 2as (attoseconds)
+//1 entropic tick = 0.2as (attoseconds)
 //The entropic controller can simulate time 30 seconds
-//Every entropic tick (2as) the minimum movement of a particle is one entropic length (0.2am); the minimum speed of a particle is 0.2am/2as
-//The time for a single electron to orbit a hydrogen atom is 24as or 12 entropic ticks and the orbit velocity is 2.18*10^6 m/s
+//Every entropic tick (0.2as) the minimum movement of a particle is one entropic length (0.2am); the minimum speed of a particle is 0.2am/0.2as = 1m/s
+//The time for a single electron to orbit a hydrogen atom is 24as or 120 entropic ticks and the orbit velocity is 2.18*10^6 m/s
 //Vector max size: 209622091746699450
 
 //TO DO:
@@ -60,16 +60,16 @@ long long int calculateacceleration(particle particle, short dimension) {
 		return particle.acceleration[dimension];
 	}
     //Otherwise, we calculate the multibody interaction of all other particles in the system on this particle
-    unsigned long long int distance; //Distance is unsigned
+    double distance;
 	//Set the particle mass according to the particle type
     //Set particle charge according to the particle type
 	//Set the strong force constant according to the particle type
-    unsigned long long int mass = 0; //Mass is unsigned
-	long long int charge = 0; //Charge is signed
-	long long int strong = 0; //Strong force is signed
-    unsigned long long int mass2 = 0; //Mass is unsigned
-    long long int charge2 = 0; //Charge is signed
-    long long int strong2 = 0; //Strong force is signed
+    double mass = 0;
+	double charge = 0;
+	double strong = 0;
+    double mass2 = 0;
+    double charge2 = 0;
+    double strong2 = 0;
     if (particle.type == -1) { //Electron
         mass = 0;
         charge = 0;
@@ -86,11 +86,11 @@ long long int calculateacceleration(particle particle, short dimension) {
         strong = 0;
     }
     //Set the K values for the calculations
-    unsigned long long int kgravity = 0;
-    unsigned long long int kem = 0;
-    unsigned long long int kstrong = 0;
+    double kgravity = 0;
+    double kem = 0;
+    double kstrong = 0;
 	//Calculate the force on this particle by summing the force on all other particles in the system
-	long long int force = 0; //Force is signed
+    double force = 0;
 	//Loop through all particles in the system
     for (int i = 0; i < particles.size(); i++) {
         if (i != particle.number) { //If the particle is the same as the input particle, we skip it
