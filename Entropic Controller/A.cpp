@@ -68,9 +68,9 @@ long long int calculateacceleration(particle particle, short dimension) {
     double distance;
 	//Set the particle mass according to the particle type
     //Set particle charge according to the particle type
-	//Set the strong force constant according to the particle type
+    //Set the strong force constant according to the particle type
     double mass = 0;
-	double charge = 0;
+    double charge = 0;
     double mass2 = 0;
     double charge2 = 0;
     if (particle.type == -1) { //Electron
@@ -478,7 +478,7 @@ void readsolution() {
 
 void about() {
     cout << "A by arc" << endl;
-	cout << "Version: 1.0" << endl;
+    cout << "Version: 1.0" << endl;
 	cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
     cout << "Technical Specifications:" << endl;
     cout << "Space Percision: 0.2 attometers" << endl;
