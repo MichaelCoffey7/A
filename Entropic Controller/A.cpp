@@ -69,7 +69,7 @@ long long int calculateacceleration(particle particle, short dimension) {
     if (particle.type == -1) { //Electron
         mass = 9.109383632E-31;
         charge = -1;
-        strong = 1;
+        strong = 0;
     }
     if (particle.type == 0) { //Neutron
         mass = 1.674927485E-27;
@@ -93,17 +93,17 @@ long long int calculateacceleration(particle particle, short dimension) {
             //Calculate the distance between the two particles
             distance = 2E-19 * abs(particle.position[dimension] - particles[i].position[dimension]); //Multiply the calculated unit distance by 0.2 attometers
 			//Assign the constant values depending on particle type
-            if (particle.type == -1) { //Electron
+            if (particles[i].type == -1) { //Electron
                 mass2 = 9.109383632E-31;
                 charge2 = -1;
                 strong2 = 1;
             }
-            if (particle.type == 0) { //Neutron
+            if (particles[i].type == 0) { //Neutron
                 mass2 = 1.674927485E-27;
                 charge2 = 0;
                 strong2 = 1;
             }
-            if (particle.type == 1) { //Proton
+            if (particles[i].type == 1) { //Proton
                 mass2 = 1.672621911E-27;
                 charge2 = 1;
                 strong2 = 1;
