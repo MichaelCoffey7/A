@@ -16,7 +16,6 @@ using namespace std;
 //Vector max size: 209622091746699450
 
 //TO DO:
-//Implement simulate time
 //Implement generate solution
 
 class particle {
