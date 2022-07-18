@@ -109,8 +109,8 @@ long long int calculateacceleration(particle particle, short dimension) {
                 charge2 = 1;
             }
             //Perform the calculation of force by adding it to the force variable
-		    force += (kem * charge * charge2) / (distance * distance);
-		    force += (kgravity * mass * mass2) / (distance * distance);
+            force += (kem * charge * charge2) / (distance * distance);
+            force += (kgravity * mass * mass2) / (distance * distance);
         }
     }
     //Convert force to acceleration by dividing by mass and return the acceleration.
