@@ -7,15 +7,16 @@
 #include <algorithm>
 using namespace std;
 
-//1 entropic length = 0.2am (attometers)
+//1 entropic length = 1am (attometers)
 //The entropic controller can control entropy within a 3 meter by 3 meter cube
-//1 entropic tick = 0.2as (attoseconds)
+//1 entropic tick = 1as (attoseconds)
 //The entropic controller can simulate time 30 seconds
-//Every entropic tick (0.2as) the minimum movement of a particle is one entropic length (0.2am); the minimum speed of a particle is 0.2am/0.2as = 1m/s
-//The time for a single electron to orbit a hydrogen atom is 24as or 120 entropic ticks and the orbit velocity is 2.18*10^6 m/s
+//Every entropic tick (1as) the minimum movement of a particle is one entropic length (1am); the minimum speed of a particle is 1am/1as = 1m/s
+//The time for a single electron to orbit a hydrogen atom is 24as or 24 entropic ticks and the orbit velocity is 2.18*10^6 m/s
 //Vector max size: 209622091746699450
 
 //TO DO:
+//Implement strong force
 //Implement generate solution
 
 class particle {
@@ -36,8 +37,8 @@ vector<particle> particles; //Vector of particles for selected (initial) .state 
 vector<particle> particles2; //Vector of particles for final .state file
 vector<particle> inputparticles; //Vector of particles to inject at edges of the cube
 
-long long int boundary = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
-long long int boundary2 = 7500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
+long long int boundary = 3000000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
+long long int boundary2 = 3000000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
     if (abs(particle.position[0]) > boundary or abs(particle.position[1]) > boundary or abs(particle.position[2]) > boundary or particle.position[0] == LLONG_MIN or particle.position[1] == LLONG_MIN or particle.position[2] == LLONG_MIN) {
@@ -67,7 +68,7 @@ long long int calculateacceleration(particle particle, short dimension) {
     double distance;
     //Set the particle mass according to the particle type
     //Set particle charge according to the particle type
-    //Set the strong force constant according to the particle type
+    //TODO Set the strong force constant according to the particle type
     double mass = 0;
     double charge = 0;
     double mass2 = 0;
@@ -93,7 +94,7 @@ long long int calculateacceleration(particle particle, short dimension) {
     for (unsigned long long int i = 0; i < particles.size(); i++) {
         if (i != particle.number) { //If the particle is the same as the input particle, we skip it
             //Calculate the distance between the two particles
-            distance = 2E-19 * abs(particle.position[dimension] - particles[i].position[dimension]); //Multiply the calculated unit distance by 0.2 attometers
+            distance = 1E-18 * abs(particle.position[dimension] - particles[i].position[dimension]); //Multiply the calculated unit distance by 1 attometer
             //Assign the constant values depending on particle type
             if (particles[i].type == -1) { //Electron
                 mass2 = 9.109383632E-31;
@@ -480,8 +481,8 @@ void about() {
     cout << "Version: 1.0" << endl;
     cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
     cout << "Technical Specifications:" << endl;
-    cout << "Space Percision: 0.2 attometers" << endl;
-    cout << "Time Percision: 0.2 attoseconds" << endl;
+    cout << "Space Percision: 1 attometer" << endl;
+    cout << "Time Percision: 1 attoseconds" << endl;
     cout << "Maximum Simulation Volume: 3 meters x 3 meters x 3 meters" << endl;
     cout << "Maximum Simulation Time: 3 seconds" << endl;
     cout << "Particle Limit: 209622091746699450" << endl;
