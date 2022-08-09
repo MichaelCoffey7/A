@@ -24,7 +24,7 @@ A requires a license for commercial and/or organizational use.
 
 Contact STEM Series Scientific Manuals for licensing.
 
-STEM Series Scientific Manuals
+**STEM Series Scientific Manuals**
 
 7828 Morganite Ave
 
