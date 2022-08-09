@@ -22,7 +22,7 @@ A is free to use for personal use.
 
 A requires a license for commercial and/or organizational use.
 
-Contact STEM Series Scientific Manuals for licensing:
+Contact STEM Series Scientific Manuals for licensing.
 
 STEM Series Scientific Manuals
 
