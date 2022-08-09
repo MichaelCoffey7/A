@@ -232,6 +232,7 @@ void listdata() {
     }
     cout << endl;
 }
+
 void removeparticle() {
     unsigned long long int particlenumber;
     cout << "Enter the particle number to remove: ";
