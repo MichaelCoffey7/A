@@ -6,9 +6,9 @@ Description: A program to simulate the motion of particles in a 3D space.
 
 Technical Specifications:
 
-Space Percision: 0.2 attometers
+Space Percision: 1 attometer
 
-Time Percision: 0.2 attoseconds
+Time Percision: 1 attosecond
 
 Maximum Simulation Volume: 3 meters x 3 meters x 3 meters
 
