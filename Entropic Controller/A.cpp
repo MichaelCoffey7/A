@@ -482,7 +482,7 @@ void about() {
     cout << "Description: A program to simulate the motion of particles in a 3D space" << endl;
     cout << "Technical Specifications:" << endl;
     cout << "Space Percision: 1 attometer" << endl;
-    cout << "Time Percision: 1 attoseconds" << endl;
+    cout << "Time Percision: 1 attosecond" << endl;
     cout << "Maximum Simulation Volume: 3 meters x 3 meters x 3 meters" << endl;
     cout << "Maximum Simulation Time: 3 seconds" << endl;
     cout << "Particle Limit: 209622091746699450" << endl;
