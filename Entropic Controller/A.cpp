@@ -41,7 +41,7 @@ long long int boundary = 1500000000000000000; //The side length of the entropic 
 long long int boundary2 = 1500000000000000000; //The side length of the entropic controller cube; default value is 3 meter by 3 meter cube
 
 bool withinbound(particle particle) { //Checks if the input particle is within the boundary
-    if (abs(particle.position[0]) > boundary or abs(particle.position[1]) > boundary or abs(particle.position[2]) > boundary or particle.position[0] == LLONG_MIN or particle.position[1] == LLONG_MIN or particle.position[2] == LLONG_MIN) {
+    if (abs(particle.position[0]) > boundary or abs(particle.position[1]) > boundary or abs(particle.position[2]) > boundary) {
         return false;
     }
     else {
