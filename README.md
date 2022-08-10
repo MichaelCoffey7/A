@@ -29,3 +29,5 @@ Contact STEM Series Scientific Manuals for licensing.
 7828 Morganite Ave
 
 Las Vegas, NV 89113
+
+**This version doesn't actually work because of a lack of floating point precision.**
