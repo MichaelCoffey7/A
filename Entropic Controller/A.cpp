@@ -23,9 +23,9 @@ class particle {
 public:
     short type; //The type of particle: -1 electron, 0 neutron, 1 proton
     //Define the kinematic values for particles
-    long long int position[3];
-    long long int velocity[3];
-    long long int acceleration[3];
+    long long int position[3]; //attometers
+    long long int velocity[3]; //attometers/attoseconds = m/s
+    long long int acceleration[3]; //m/s^2
     unsigned long long int injectiontime; //For input particles, the time the particle appears at the edge of the cube
     unsigned long long int number; //The particle number
 };
@@ -73,6 +73,7 @@ long long int calculateacceleration(particle particle, short dimension) {
     double charge = 0;
     double mass2 = 0;
     double charge2 = 0;
+    double acceleration = 0;
     if (particle.type == -1) { //Electron
         mass = 9.109383632E-31;
         charge = -1;
@@ -114,7 +115,8 @@ long long int calculateacceleration(particle particle, short dimension) {
         }
     }
     //Convert force to acceleration by dividing by mass and return the acceleration.
-    return (force / mass);
+    acceleration = force / mass;
+    return acceleration;
 }
 
 void updatetick() {  //Run one tick of the simulation for the vector of particles
