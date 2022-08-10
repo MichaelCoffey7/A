@@ -116,7 +116,7 @@ long long int calculateacceleration(particle particle, short dimension) {
         }
     }
     //Convert force to acceleration by dividing by mass and return the acceleration.
-    acceleration = force / mass;
+    acceleration = 1E-18 * (force / mass);
     return acceleration;
 }
 
