@@ -1,4 +1,4 @@
-A by arc
+A by arc is developed by STEM Series Scientific Manuals
 
 Version: 1.0
 
