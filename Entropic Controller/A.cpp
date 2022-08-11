@@ -482,7 +482,7 @@ void readsolution() {
 
 void about() {
     cout << "A by arc developed by STEM Series Scientific Manuals" << endl;
-	cout << "Copyright (C) STEM Series Scientific Manuals 2022" << endl;
+    cout << "Copyright (C) STEM Series Scientific Manuals 2022" << endl;
     cout << "Version: 1.0" << endl;
     cout << "License: Prototype / Demonstration" << endl;
     cout << "Description: A program to map and simulate the motion of particles in a 3D space" << endl;
