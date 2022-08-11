@@ -2,7 +2,7 @@ A by arc is developed by STEM Series Scientific Manuals
 
 Version: 1.0
 
-Description: A program to simulate the motion of particles in a 3D space
+Description: A program to map and simulate the motion of particles in a 3D space
 
 Technical Specifications:
 
