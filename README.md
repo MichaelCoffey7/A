@@ -16,8 +16,6 @@ Maximum Simulation Time: 3 seconds
 
 Particle Limit: 209622091746699450
 
-License:
-
 A is free to use for personal use.
 
 A requires a license for commercial and/or organizational use.
