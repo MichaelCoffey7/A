@@ -492,8 +492,8 @@ void about() {
     cout << "Maximum Simulation Volume: 3 meters x 3 meters x 3 meters" << endl;
     cout << "Maximum Simulation Time: 3 seconds" << endl;
     cout << "Particle Limit: 209622091746699450" << endl;
-    cout << "A is free to use for personal use." << endl;
-    cout << "A requires a license for commercial and/or organizational use." << endl;
+    cout << "A is free to use for personal use" << endl;
+    cout << "A requires a license for commercial and/or organizational use" << endl;
     cout << "STEM Series Scientific Manuals" << endl;
     cout << "7828 Morganite Ave" << endl;
     cout << "Las Vegas, NV 89113" << endl;
