@@ -10,7 +10,7 @@ using namespace std;
 //1 entropic length = 1am (attometers)
 //The entropic controller can control entropy within a 3 meter by 3 meter cube
 //1 entropic tick = 1as (attoseconds)
-//The entropic controller can simulate time 30 seconds
+//The entropic controller can simulate time 3 seconds
 //Every entropic tick (1as) the minimum movement of a particle is one entropic length (1am); the minimum speed of a particle is 1am/1as = 1m/s
 //The time for a single electron to orbit a hydrogen atom is 24as or 24 entropic ticks and the orbit velocity is 2.18*10^6 m/s
 //Vector max size: 209622091746699450
