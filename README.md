@@ -8,10 +8,6 @@ Technical Specifications:
 
 Space Percision: 1 attometer
 
-Time Percision: 1 attosecond
-
-Maximum Simulation Volume: 3 meters x 3 meters x 3 meters
-
-Maximum Simulation Time: 3 seconds
+Maximum Map Volume: 3 meters x 3 meters x 3 meters
 
 Particle Limit: 209622091746699450
