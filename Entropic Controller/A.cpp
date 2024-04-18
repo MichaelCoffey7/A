@@ -16,9 +16,9 @@ using namespace std;
 //Vector max size: 209622091746699450
 
 //TO DO:
-//Switch to 128 bit floating point (free, basic)
-//Implement strong force (standard)
-//Implement generate solution (premium)
+//Switch to 128 bit floating point
+//Implement strong force 
+//Implement generate solution 
 
 class particle {
 public:
