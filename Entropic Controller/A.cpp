@@ -180,6 +180,7 @@ void addparticle() {
     cout << "-1. Electron\n";
     cout << "0. Neutron\n";
     cout << "1. Proton\n";
+    cout << "2. Photon\n";
     cout << "Selection: ";
     cin >> charge;
     cout << "Enter the x position: ";
@@ -229,6 +230,9 @@ void listdata() {
         if (particles[i].type == 1) {
             cout << "   Proton" << endl;
         }
+        if (particles[i].type == 2) {
+            cout << "   Photon" << endl;
+        }
         cout << "   Position: (" << particles[i].position[0] << ", " << particles[i].position[1] << ", " << particles[i].position[2] << ")" << endl;
         cout << "   Velocity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
         cout << "   Acceleration: (" << particles[i].acceleration[0] << ", " << particles[i].acceleration[1] << ", " << particles[i].acceleration[2] << ")" << endl;
@@ -258,6 +262,9 @@ void savefile() {
         }
         if (particles[i].type == 1) {
             file << "   Proton" << endl;
+        }
+        if (particles[i].type == 2) {
+            file << "   Photon" << endl;
         }
         file << "   Position: (" << particles[i].position[0] << ", " << particles[i].position[1] << ", " << particles[i].position[2] << ")" << endl;
         file << "   Velocity: (" << particles[i].velocity[0] << ", " << particles[i].velocity[1] << ", " << particles[i].velocity[2] << ")" << endl;
@@ -309,6 +316,9 @@ void loadfile() { //Load the first file
                     }
                     if (line == "Proton") {
                         charge = 1;
+                    }
+                    if (line == "Photon") {
+                        charge = 2;
                     }
                     counter++;
                     break;
@@ -396,6 +406,9 @@ void loadfile2() { //Load the second file
                 if (line == "Proton") {
                     charge = 1;
                 }
+                if (line == "Photon") {
+                    charge = 2;
+                }
                 counter++;
                 break;
             case 2: //Parse position
@@ -482,7 +495,7 @@ void readsolution() {
 
 void about() {
     cout << "A by arc developed by STEM Series Scientific Manuals" << endl;
-    cout << "Copyright (C) STEM Series Scientific Manuals 2022" << endl;
+    cout << "Copyright (C) STEM Series Scientific Manuals 2025" << endl;
     cout << "Version: 1.0" << endl;
     cout << "License: Prototype / Demonstration" << endl;
     cout << "Description: A program to map and simulate the motion of particles in a 3D space" << endl;
