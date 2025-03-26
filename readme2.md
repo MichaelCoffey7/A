@@ -46,7 +46,8 @@ It is the first expression of technology developed by an Arcutran engineer — k
 
 Medium Article: I Built a Molecular Assembler That Works at the Attometer Scale — Here’s What That Means
 
-[Entropic Control Theory — Primer for Scientists (Coming Soon)]
+Entropic Control Theory — Primer for Scientists
+https://medium.com/@michaelcoffey_79454/entropic-control-theory-primer-for-scientists-8febe0f9e1e0
 
 📫 Contact
 
