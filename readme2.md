@@ -50,7 +50,7 @@ Medium Article: I Built a Molecular Assembler That Works at the Attometer Scale 
 
 📫 Contact
 
-For collaboration, discussion, or scientific interest, reach out via GitHub issues or email (coming soon).
+For collaboration, discussion, or scientific interest, reach out via GitHub issues or email iconmichael@icloud.com.
 
 This project is open to all who seek to build the future — one attometer at a time.
 
